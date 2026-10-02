@@ -1,0 +1,107 @@
+{
+  "_说明": "脱机联调用。和 config.json 只差 channels：指向本机模拟器，两台错开端口。",
+  "_用法": "先开 cm8600_sim.exe config/config.offline.json，两个面板都点「启动」；再开 CM8600Host.exe config/config.offline.json。",
+
+  "app": {
+    "title": "CM8600 上位机（脱机联调）",
+    "log_dir": "logs-offline",
+    "log_keep_days": 7
+  },
+
+  "snap7": { "dll_path": "" },
+
+  "channels": [
+    { "id": 1, "name": "1# 系统（模拟）", "ip": "127.0.0.1", "rack": 0, "slot": 1, "port": 1101, "enabled": true },
+    { "id": 2, "name": "2# 系统（模拟）", "ip": "127.0.0.1", "rack": 0, "slot": 1, "port": 1102, "enabled": true }
+  ],
+
+  "plc": {
+    "v_db_number": 1,
+    "poll_interval_ms": 200,
+    "connect_timeout_ms": 3000,
+    "reconnect_interval_ms": 3000,
+
+    "heartbeat": {
+      "tx_bit": "V9740.0",
+      "rx_bit": "V9741.0",
+      "toggle_ms": 500,
+      "timeout_ms": 3000
+    },
+
+    "query": {
+      "trigger_bit": "V9741.1",
+      "barcode_addr": "VB9750",
+      "barcode_len": 30,
+      "ok_bit": "V9740.1",
+      "fail_bit": "V9740.2"
+    },
+
+    "download": {
+      "block_addr": "VD9700",
+      "block_size": 16,
+      "oil_qty":          { "addr": "VD9700", "type": "real", "unit": "g" },
+      "refrigerant_qty":  { "addr": "VD9704", "type": "real", "unit": "g" },
+      "vacuum_level":     { "addr": "VD9708", "type": "real", "unit": "Pa" },
+      "vacuum_time":      { "addr": "VD9712", "type": "real", "unit": "s"  },
+      "refrigerant_type": { "addr": "VW9730", "type": "int16", "unit": "编号" }
+    },
+
+    "charge_done_bit": "V9741.2",
+
+    "vacuum_trigger": {
+      "mode": "on_charge_done",
+      "bit": ""
+    },
+
+    "result": {
+      "block_addr": "VB9110",
+      "block_size": 140,
+      "fields": [
+        { "key": "vacuum_start_date",  "label": "抽真空开始日期", "addr": "VB9110", "len": 10, "type": "ascii" },
+        { "key": "vacuum_start_time",  "label": "抽真空开始时间", "addr": "VB9120", "len": 10, "type": "ascii" },
+        { "key": "vacuum_duration",    "label": "抽真空时长",     "addr": "VB9130", "len": 10, "type": "ascii", "unit": "s"  },
+        { "key": "vacuum_level",       "label": "抽真空真空度",   "addr": "VB9140", "len": 10, "type": "ascii", "unit": "Pa" },
+        { "key": "charge_duration",    "label": "充注时长",       "addr": "VB9150", "len": 10, "type": "ascii", "unit": "s"  },
+        { "key": "refrigerant_type",   "label": "制冷剂类型",     "addr": "VB9160", "len": 10, "type": "ascii" },
+        { "key": "refrigerant_qty",    "label": "制冷剂加注量",   "addr": "VB9170", "len": 10, "type": "ascii", "unit": "g"  },
+        { "key": "charge_start_date",  "label": "充注开始日期",   "addr": "VB9180", "len": 10, "type": "ascii" },
+        { "key": "charge_start_time",  "label": "充注开始时间",   "addr": "VB9190", "len": 10, "type": "ascii" },
+        { "key": "oil_duration",       "label": "油充注时长",     "addr": "VB9200", "len": 10, "type": "ascii", "unit": "s"  },
+        { "key": "oil_qty",            "label": "油加注量",       "addr": "VB9210", "len": 10, "type": "ascii", "unit": "g"  },
+        { "key": "barcode",            "label": "产品条码",       "addr": "VB9220", "len": 30, "type": "ascii" }
+      ]
+    }
+  },
+
+  "refrigerants": {
+    "1":  "R134A",  "2":  "R22",     "3":  "R32",     "4":  "R410A",
+    "5":  "R407C",  "6":  "R290",    "7":  "R600A",   "8":  "R404A",
+    "9":  "R1234YF","10": "R1233ZD", "11": "R515B",   "12": "R454C",
+    "13": "备用"
+  },
+
+  "datasource": {
+    "type": "mock",
+    "file_path": "",
+    "refresh_interval_ms": 60000,
+    "cache_db": "param_cache.db"
+  },
+
+  "upload": {
+    "_说明": "脱机时指向本机的假 ERP。没有服务时上传会一直失败并重试，正好用来验证断网重发。",
+    "mode": "combined",
+    "base_url": "http://127.0.0.1:8080",
+    "vacuum_path": "/api/mes/vacuum",
+    "charge_path": "/api/mes/charge",
+    "combined_path": "/api/mes/record",
+    "timeout_ms": 5000,
+    "retry_interval_ms": 10000,
+    "max_retry": 0,
+    "headers": {}
+  },
+
+  "storage": {
+    "db_path": "cm8600-offline.db",
+    "keep_days": 30
+  }
+}

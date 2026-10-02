@@ -1,0 +1,27 @@
+snap7_autogen/timestamp: \
+	D:/svn/天意/cm8600/third_party/snap7-full-1.4.2/snap7-full-1.4.2/src/core/s7_client.cpp \
+	D:/svn/天意/cm8600/third_party/snap7-full-1.4.2/snap7-full-1.4.2/src/core/s7_client.h \
+	D:/svn/天意/cm8600/third_party/snap7-full-1.4.2/snap7-full-1.4.2/src/core/s7_isotcp.cpp \
+	D:/svn/天意/cm8600/third_party/snap7-full-1.4.2/snap7-full-1.4.2/src/core/s7_isotcp.h \
+	D:/svn/天意/cm8600/third_party/snap7-full-1.4.2/snap7-full-1.4.2/src/core/s7_micro_client.cpp \
+	D:/svn/天意/cm8600/third_party/snap7-full-1.4.2/snap7-full-1.4.2/src/core/s7_micro_client.h \
+	D:/svn/天意/cm8600/third_party/snap7-full-1.4.2/snap7-full-1.4.2/src/core/s7_partner.cpp \
+	D:/svn/天意/cm8600/third_party/snap7-full-1.4.2/snap7-full-1.4.2/src/core/s7_partner.h \
+	D:/svn/天意/cm8600/third_party/snap7-full-1.4.2/snap7-full-1.4.2/src/core/s7_peer.cpp \
+	D:/svn/天意/cm8600/third_party/snap7-full-1.4.2/snap7-full-1.4.2/src/core/s7_peer.h \
+	D:/svn/天意/cm8600/third_party/snap7-full-1.4.2/snap7-full-1.4.2/src/core/s7_server.cpp \
+	D:/svn/天意/cm8600/third_party/snap7-full-1.4.2/snap7-full-1.4.2/src/core/s7_server.h \
+	D:/svn/天意/cm8600/third_party/snap7-full-1.4.2/snap7-full-1.4.2/src/core/s7_text.cpp \
+	D:/svn/天意/cm8600/third_party/snap7-full-1.4.2/snap7-full-1.4.2/src/core/s7_text.h \
+	D:/svn/天意/cm8600/third_party/snap7-full-1.4.2/snap7-full-1.4.2/src/lib/snap7_libmain.cpp \
+	D:/svn/天意/cm8600/third_party/snap7-full-1.4.2/snap7-full-1.4.2/src/lib/snap7_libmain.h \
+	D:/svn/天意/cm8600/third_party/snap7-full-1.4.2/snap7-full-1.4.2/src/sys/snap_msgsock.cpp \
+	D:/svn/天意/cm8600/third_party/snap7-full-1.4.2/snap7-full-1.4.2/src/sys/snap_msgsock.h \
+	D:/svn/天意/cm8600/third_party/snap7-full-1.4.2/snap7-full-1.4.2/src/sys/snap_sysutils.cpp \
+	D:/svn/天意/cm8600/third_party/snap7-full-1.4.2/snap7-full-1.4.2/src/sys/snap_sysutils.h \
+	D:/svn/天意/cm8600/third_party/snap7-full-1.4.2/snap7-full-1.4.2/src/sys/snap_tcpsrvr.cpp \
+	D:/svn/天意/cm8600/third_party/snap7-full-1.4.2/snap7-full-1.4.2/src/sys/snap_tcpsrvr.h \
+	D:/svn/天意/cm8600/third_party/snap7-full-1.4.2/snap7-full-1.4.2/src/sys/snap_threads.cpp \
+	D:/svn/天意/cm8600/third_party/snap7-full-1.4.2/snap7-full-1.4.2/src/sys/snap_threads.h \
+	D:/svn/天意/cm8600/third_party/snap7/CMakeLists.txt \
+	C:/Program\ Files/Microsoft\ Visual\ Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/cmake.exe

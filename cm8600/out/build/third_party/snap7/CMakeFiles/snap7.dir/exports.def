@@ -1,0 +1,760 @@
+EXPORTS 
+	??_R0?AVTClientThread@@@8 	 DATA
+	??_R0?AVTConnListenerThread@@@8 	 DATA
+	??_R0?AVTCustomMsgServer@@@8 	 DATA
+	??_R0?AVTEcoTcpWorker@@@8 	 DATA
+	??_R0?AVTIsoTcpSocket@@@8 	 DATA
+	??_R0?AVTIsoTcpWorker@@@8 	 DATA
+	??_R0?AVTMsgListenerThread@@@8 	 DATA
+	??_R0?AVTMsgSocket@@@8 	 DATA
+	??_R0?AVTMsgWorkerThread@@@8 	 DATA
+	??_R0?AVTPartnerThread@@@8 	 DATA
+	??_R0?AVTS7Worker@@@8 	 DATA
+	??_R0?AVTSnap7Client@@@8 	 DATA
+	??_R0?AVTSnap7MicroClient@@@8 	 DATA
+	??_R0?AVTSnap7Partner@@@8 	 DATA
+	??_R0?AVTSnap7Peer@@@8 	 DATA
+	??_R0?AVTSnap7Server@@@8 	 DATA
+	??_R0?AVTSnapBase@@@8 	 DATA
+	??_R0?AVTSnapThread@@@8 	 DATA
+	?SZLNotAvail@@3PAEA 	 DATA
+	?SZLSysState@@3PAEA 	 DATA
+	?SZL_ID_0000_IDX_XXXX@@3PAEA 	 DATA
+	?SZL_ID_0002_IDX_XXXX@@3PAEA 	 DATA
+	?SZL_ID_0011_IDX_XXXX@@3PAEA 	 DATA
+	?SZL_ID_0012_IDX_XXXX@@3PAEA 	 DATA
+	?SZL_ID_0013_IDX_XXXX@@3PAEA 	 DATA
+	?SZL_ID_0014_IDX_XXXX@@3PAEA 	 DATA
+	?SZL_ID_0015_IDX_XXXX@@3PAEA 	 DATA
+	?SZL_ID_0017_IDX_XXXX@@3PAEA 	 DATA
+	?SZL_ID_0018_IDX_XXXX@@3PAEA 	 DATA
+	?SZL_ID_0019_IDX_XXXX@@3PAEA 	 DATA
+	?SZL_ID_001A_IDX_XXXX@@3PAEA 	 DATA
+	?SZL_ID_001B_IDX_XXXX@@3PAEA 	 DATA
+	?SZL_ID_001C_IDX_XXXX@@3PAEA 	 DATA
+	?SZL_ID_0021_IDX_XXXX@@3PAEA 	 DATA
+	?SZL_ID_0023_IDX_XXXX@@3PAEA 	 DATA
+	?SZL_ID_0024_IDX_XXXX@@3PAEA 	 DATA
+	?SZL_ID_0025_IDX_XXXX@@3PAEA 	 DATA
+	?SZL_ID_0036_IDX_XXXX@@3PAEA 	 DATA
+	?SZL_ID_0037_IDX_XXXX@@3PAEA 	 DATA
+	?SZL_ID_0038_IDX_XXXX@@3PAEA 	 DATA
+	?SZL_ID_003A_IDX_XXXX@@3PAEA 	 DATA
+	?SZL_ID_0074_IDX_XXXX@@3PAEA 	 DATA
+	?SZL_ID_0092_IDX_0000@@3PAEA 	 DATA
+	?SZL_ID_0094_IDX_0000@@3PAEA 	 DATA
+	?SZL_ID_0095_IDX_XXXX@@3PAEA 	 DATA
+	?SZL_ID_00A0_IDX_XXXX@@3PAEA 	 DATA
+	?SZL_ID_0111_IDX_0001@@3PAEA 	 DATA
+	?SZL_ID_0111_IDX_0006@@3PAEA 	 DATA
+	?SZL_ID_0111_IDX_0007@@3PAEA 	 DATA
+	?SZL_ID_0112_IDX_0000@@3PAEA 	 DATA
+	?SZL_ID_0112_IDX_0100@@3PAEA 	 DATA
+	?SZL_ID_0112_IDX_0200@@3PAEA 	 DATA
+	?SZL_ID_0112_IDX_0400@@3PAEA 	 DATA
+	?SZL_ID_0113_IDX_0001@@3PAEA 	 DATA
+	?SZL_ID_0115_IDX_0800@@3PAEA 	 DATA
+	?SZL_ID_0117_IDX_0000@@3PAEA 	 DATA
+	?SZL_ID_0117_IDX_0001@@3PAEA 	 DATA
+	?SZL_ID_0117_IDX_0002@@3PAEA 	 DATA
+	?SZL_ID_0117_IDX_0003@@3PAEA 	 DATA
+	?SZL_ID_0117_IDX_0004@@3PAEA 	 DATA
+	?SZL_ID_0118_IDX_0000@@3PAEA 	 DATA
+	?SZL_ID_0118_IDX_0001@@3PAEA 	 DATA
+	?SZL_ID_0118_IDX_0002@@3PAEA 	 DATA
+	?SZL_ID_0118_IDX_0003@@3PAEA 	 DATA
+	?SZL_ID_011C_IDX_0001@@3PAEA 	 DATA
+	?SZL_ID_011C_IDX_0002@@3PAEA 	 DATA
+	?SZL_ID_011C_IDX_0003@@3PAEA 	 DATA
+	?SZL_ID_011C_IDX_0004@@3PAEA 	 DATA
+	?SZL_ID_011C_IDX_0005@@3PAEA 	 DATA
+	?SZL_ID_011C_IDX_0007@@3PAEA 	 DATA
+	?SZL_ID_011C_IDX_0008@@3PAEA 	 DATA
+	?SZL_ID_011C_IDX_0009@@3PAEA 	 DATA
+	?SZL_ID_011C_IDX_000A@@3PAEA 	 DATA
+	?SZL_ID_011C_IDX_000B@@3PAEA 	 DATA
+	?SZL_ID_0124_IDX_XXXX@@3PAEA 	 DATA
+	?SZL_ID_0125_IDX_0000@@3PAEA 	 DATA
+	?SZL_ID_0125_IDX_0001@@3PAEA 	 DATA
+	?SZL_ID_0131_IDX_0001@@3PAEA 	 DATA
+	?SZL_ID_0131_IDX_0002@@3PAEA 	 DATA
+	?SZL_ID_0131_IDX_0003@@3PAEA 	 DATA
+	?SZL_ID_0131_IDX_0004@@3PAEA 	 DATA
+	?SZL_ID_0131_IDX_0005@@3PAEA 	 DATA
+	?SZL_ID_0131_IDX_0006@@3PAEA 	 DATA
+	?SZL_ID_0131_IDX_0007@@3PAEA 	 DATA
+	?SZL_ID_0131_IDX_0008@@3PAEA 	 DATA
+	?SZL_ID_0131_IDX_0009@@3PAEA 	 DATA
+	?SZL_ID_0132_IDX_0001@@3PAEA 	 DATA
+	?SZL_ID_0132_IDX_0002@@3PAEA 	 DATA
+	?SZL_ID_0132_IDX_0003@@3PAEA 	 DATA
+	?SZL_ID_0132_IDX_0004@@3PAEA 	 DATA
+	?SZL_ID_0132_IDX_0005@@3PAEA 	 DATA
+	?SZL_ID_0132_IDX_0006@@3PAEA 	 DATA
+	?SZL_ID_0132_IDX_0007@@3PAEA 	 DATA
+	?SZL_ID_0132_IDX_0008@@3PAEA 	 DATA
+	?SZL_ID_0132_IDX_0009@@3PAEA 	 DATA
+	?SZL_ID_0132_IDX_000A@@3PAEA 	 DATA
+	?SZL_ID_0132_IDX_000B@@3PAEA 	 DATA
+	?SZL_ID_0132_IDX_000C@@3PAEA 	 DATA
+	?SZL_ID_0137_IDX_07FE@@3PAEA 	 DATA
+	?SZL_ID_0174_IDX_0001@@3PAEA 	 DATA
+	?SZL_ID_0174_IDX_0004@@3PAEA 	 DATA
+	?SZL_ID_0174_IDX_0005@@3PAEA 	 DATA
+	?SZL_ID_0174_IDX_0006@@3PAEA 	 DATA
+	?SZL_ID_0174_IDX_000B@@3PAEA 	 DATA
+	?SZL_ID_0174_IDX_000C@@3PAEA 	 DATA
+	?SZL_ID_0194_IDX_0064@@3PAEA 	 DATA
+	?SZL_ID_01A0_IDX_0000@@3PAEA 	 DATA
+	?SZL_ID_01A0_IDX_0001@@3PAEA 	 DATA
+	?SZL_ID_01A0_IDX_0002@@3PAEA 	 DATA
+	?SZL_ID_01A0_IDX_0003@@3PAEA 	 DATA
+	?SZL_ID_01A0_IDX_0004@@3PAEA 	 DATA
+	?SZL_ID_01A0_IDX_0005@@3PAEA 	 DATA
+	?SZL_ID_01A0_IDX_0006@@3PAEA 	 DATA
+	?SZL_ID_01A0_IDX_0007@@3PAEA 	 DATA
+	?SZL_ID_01A0_IDX_0008@@3PAEA 	 DATA
+	?SZL_ID_01A0_IDX_0009@@3PAEA 	 DATA
+	?SZL_ID_01A0_IDX_000A@@3PAEA 	 DATA
+	?SZL_ID_01A0_IDX_000B@@3PAEA 	 DATA
+	?SZL_ID_01A0_IDX_000C@@3PAEA 	 DATA
+	?SZL_ID_01A0_IDX_000D@@3PAEA 	 DATA
+	?SZL_ID_01A0_IDX_000E@@3PAEA 	 DATA
+	?SZL_ID_01A0_IDX_000F@@3PAEA 	 DATA
+	?SZL_ID_01A0_IDX_0010@@3PAEA 	 DATA
+	?SZL_ID_01A0_IDX_0011@@3PAEA 	 DATA
+	?SZL_ID_01A0_IDX_0012@@3PAEA 	 DATA
+	?SZL_ID_01A0_IDX_0013@@3PAEA 	 DATA
+	?SZL_ID_01A0_IDX_0014@@3PAEA 	 DATA
+	?SZL_ID_01A0_IDX_0015@@3PAEA 	 DATA
+	?SZL_ID_0222_IDX_0001@@3PAEA 	 DATA
+	?SZL_ID_0222_IDX_000A@@3PAEA 	 DATA
+	?SZL_ID_0222_IDX_0014@@3PAEA 	 DATA
+	?SZL_ID_0222_IDX_0028@@3PAEA 	 DATA
+	?SZL_ID_0222_IDX_0050@@3PAEA 	 DATA
+	?SZL_ID_0222_IDX_0064@@3PAEA 	 DATA
+	?SZL_ID_0225_IDX_0001@@3PAEA 	 DATA
+	?SZL_ID_0232_IDX_0001@@3PAEA 	 DATA
+	?SZL_ID_0232_IDX_0004@@3PAEA 	 DATA
+	?SZL_ID_0292_IDX_0000@@3PAEA 	 DATA
+	?SZL_ID_0294_IDX_XXXX@@3PAEA 	 DATA
+	?SZL_ID_0424_IDX_XXXX@@3PAEA 	 DATA
+	?SZL_ID_0591_IDX_XXXX@@3PAEA 	 DATA
+	?SZL_ID_0692_IDX_0000@@3PAEA 	 DATA
+	?SZL_ID_0694_IDX_0064@@3PAEA 	 DATA
+	?SZL_ID_0794_IDX_XXXX@@3PAEA 	 DATA
+	?SZL_ID_0A21_IDX_XXXX@@3PAEA 	 DATA
+	?SZL_ID_0A91_IDX_XXXX@@3PAEA 	 DATA
+	?SZL_ID_0C91_IDX_07FE@@3PAEA 	 DATA
+	?SZL_ID_0D91_IDX_0000@@3PAEA 	 DATA
+	?SZL_ID_0D97_IDX_0000@@3PAEA 	 DATA
+	?SZL_ID_0F00_IDX_XXXX@@3PAEA 	 DATA
+	?SZL_ID_0F11_IDX_0001@@3PAEA 	 DATA
+	?SZL_ID_0F11_IDX_0006@@3PAEA 	 DATA
+	?SZL_ID_0F11_IDX_0007@@3PAEA 	 DATA
+	?SZL_ID_0F12_IDX_0000@@3PAEA 	 DATA
+	?SZL_ID_0F12_IDX_0100@@3PAEA 	 DATA
+	?SZL_ID_0F12_IDX_0200@@3PAEA 	 DATA
+	?SZL_ID_0F12_IDX_0400@@3PAEA 	 DATA
+	?SZL_ID_0F14_IDX_XXXX@@3PAEA 	 DATA
+	?SZL_ID_0F17_IDX_XXXX@@3PAEA 	 DATA
+	?SZL_ID_0F18_IDX_XXXX@@3PAEA 	 DATA
+	?SZL_ID_0F19_IDX_XXXX@@3PAEA 	 DATA
+	?SZL_ID_0F1A_IDX_XXXX@@3PAEA 	 DATA
+	?SZL_ID_0F1B_IDX_XXXX@@3PAEA 	 DATA
+	?SZL_ID_0F1C_IDX_XXXX@@3PAEA 	 DATA
+	?SZL_ID_0F21_IDX_XXXX@@3PAEA 	 DATA
+	?SZL_ID_0F23_IDX_XXXX@@3PAEA 	 DATA
+	?SZL_ID_0F25_IDX_XXXX@@3PAEA 	 DATA
+	?SZL_ID_0F36_IDX_XXXX@@3PAEA 	 DATA
+	?SZL_ID_0F37_IDX_XXXX@@3PAEA 	 DATA
+	?SZL_ID_0F38_IDX_XXXX@@3PAEA 	 DATA
+	?SZL_ID_0F3A_IDX_XXXX@@3PAEA 	 DATA
+	?SZL_ID_0F74_IDX_XXXX@@3PAEA 	 DATA
+	?SZL_ID_0F92_IDX_XXXX@@3PAEA 	 DATA
+	?SZL_ID_0F94_IDX_XXXX@@3PAEA 	 DATA
+	?SZL_ID_0F95_IDX_XXXX@@3PAEA 	 DATA
+	?SZL_ID_0F9A_IDX_XXXX@@3PAEA 	 DATA
+	?SZL_ID_0FA0_IDX_XXXX@@3PAEA 	 DATA
+	??0SocketsLayer@@QEAA@XZ
+	??0TClientThread@@QEAA@PEAVTSnap7Client@@@Z
+	??0TConnListenerThread@@QEAA@PEAVTMsgSocket@@PEAVTConnectionServer@@@Z
+	??0TConnectionServer@@QEAA@XZ
+	??0TCustomMsgServer@@QEAA@XZ
+	??0TEcoTcpWorker@@QEAA@XZ
+	??0TIsoTcpSocket@@QEAA@XZ
+	??0TIsoTcpWorker@@QEAA@XZ
+	??0TMsgEventQueue@@QEAA@HH@Z
+	??0TMsgListenerThread@@QEAA@PEAVTMsgSocket@@PEAVTCustomMsgServer@@@Z
+	??0TMsgSocket@@QEAA@XZ
+	??0TMsgWorkerThread@@QEAA@PEAVTMsgSocket@@PEAVTCustomMsgServer@@@Z
+	??0TPartnerThread@@QEAA@PEAVTSnap7Partner@@I@Z
+	??0TPinger@@QEAA@XZ
+	??0TRawSocketPinger@@QEAA@XZ
+	??0TS7Worker@@QEAA@XZ
+	??0TServersManager@@QEAA@XZ
+	??0TSnap7Client@@QEAA@XZ
+	??0TSnap7MicroClient@@QEAA@XZ
+	??0TSnap7Partner@@QEAA@_N@Z
+	??0TSnap7Peer@@QEAA@XZ
+	??0TSnap7Server@@QEAA@XZ
+	??0TSnapBase@@QEAA@XZ
+	??0TSnapCriticalSection@@QEAA@XZ
+	??0TSnapEvent@@QEAA@_N@Z
+	??0TSnapThread@@QEAA@XZ
+	??1SocketsLayer@@QEAA@XZ
+	??1TClientThread@@UEAA@XZ
+	??1TConnListenerThread@@UEAA@XZ
+	??1TConnectionServer@@QEAA@XZ
+	??1TCustomMsgServer@@UEAA@XZ
+	??1TEcoTcpWorker@@UEAA@XZ
+	??1TIsoTcpSocket@@UEAA@XZ
+	??1TIsoTcpWorker@@UEAA@XZ
+	??1TMsgEventQueue@@QEAA@XZ
+	??1TMsgListenerThread@@UEAA@XZ
+	??1TMsgSocket@@UEAA@XZ
+	??1TMsgWorkerThread@@UEAA@XZ
+	??1TPartnerThread@@UEAA@XZ
+	??1TPinger@@QEAA@XZ
+	??1TRawSocketPinger@@QEAA@XZ
+	??1TS7Worker@@UEAA@XZ
+	??1TServersManager@@QEAA@XZ
+	??1TSnap7Client@@UEAA@XZ
+	??1TSnap7MicroClient@@UEAA@XZ
+	??1TSnap7Partner@@UEAA@XZ
+	??1TSnap7Peer@@UEAA@XZ
+	??1TSnap7Server@@UEAA@XZ
+	??1TSnapCriticalSection@@QEAA@XZ
+	??1TSnapEvent@@QEAA@XZ
+	??1TSnapThread@@UEAA@XZ
+	??_7TClientThread@@6B@
+	??_7TConnListenerThread@@6B@
+	??_7TCustomMsgServer@@6B@
+	??_7TEcoTcpWorker@@6B@
+	??_7TIsoTcpSocket@@6B@
+	??_7TIsoTcpWorker@@6B@
+	??_7TMsgListenerThread@@6B@
+	??_7TMsgSocket@@6B@
+	??_7TMsgWorkerThread@@6B@
+	??_7TPartnerThread@@6B@
+	??_7TS7Worker@@6B@
+	??_7TSnap7Client@@6B@
+	??_7TSnap7MicroClient@@6B@
+	??_7TSnap7Partner@@6B@
+	??_7TSnap7Peer@@6B@
+	??_7TSnap7Server@@6B@
+	??_7TSnapThread@@6B@
+	?ABRead@TSnap7MicroClient@@QEAAHHHPEAX@Z
+	?ABWrite@TSnap7MicroClient@@QEAAHHHPEAX@Z
+	?AddServer@TServersManager@@AEAAXPEAVTConnectionServer@@@Z
+	?AsABRead@TSnap7Client@@QEAAHHHPEAX@Z
+	?AsABWrite@TSnap7Client@@QEAAHHHPEAX@Z
+	?AsBSend@TSnap7Partner@@QEAAHIPEAXH@Z
+	?AsCTRead@TSnap7Client@@QEAAHHHPEAX@Z
+	?AsCTWrite@TSnap7Client@@QEAAHHHPEAX@Z
+	?AsCompress@TSnap7Client@@QEAAHH@Z
+	?AsCopyRamToRom@TSnap7Client@@QEAAHH@Z
+	?AsDBFill@TSnap7Client@@QEAAHHH@Z
+	?AsDBGet@TSnap7Client@@QEAAHHPEAXAEAH@Z
+	?AsDBRead@TSnap7Client@@QEAAHHHHPEAX@Z
+	?AsDBWrite@TSnap7Client@@QEAAHHHHPEAX@Z
+	?AsDownload@TSnap7Client@@QEAAHHPEAXH@Z
+	?AsEBRead@TSnap7Client@@QEAAHHHPEAX@Z
+	?AsEBWrite@TSnap7Client@@QEAAHHHPEAX@Z
+	?AsFullUpload@TSnap7Client@@QEAAHHHPEAXAEAH@Z
+	?AsListBlocksOfType@TSnap7Client@@QEAAHHPEAY0CAAA@GAEAH@Z
+	?AsMBRead@TSnap7Client@@QEAAHHHPEAX@Z
+	?AsMBWrite@TSnap7Client@@QEAAHHHPEAX@Z
+	?AsReadArea@TSnap7Client@@QEAAHHHHHHPEAX@Z
+	?AsReadSZL@TSnap7Client@@QEAAHHHPEAUTS7SZL@@AEAH@Z
+	?AsReadSZLList@TSnap7Client@@QEAAHPEAUTS7SZLList@@AEAH@Z
+	?AsTMRead@TSnap7Client@@QEAAHHHPEAX@Z
+	?AsTMWrite@TSnap7Client@@QEAAHHHPEAX@Z
+	?AsUpload@TSnap7Client@@QEAAHHHPEAXAEAH@Z
+	?AsWriteArea@TSnap7Client@@QEAAHHHHHHPEAX@Z
+	?BCD@TS7Worker@@AEAAEG@Z
+	?BCDtoByte@TSnap7MicroClient@@AEAAEE@Z
+	?BLK_DoBlockInfo_GetBlkInfo@TS7Worker@@IEAAXPEAUTS7Area@@PEAUTResDataBlockInfo@@AEAUTCB@@@Z
+	?BLK_GetBlkInfo@TS7Worker@@IEAAXAEAUTCB@@@Z
+	?BLK_GetBlockNum_GetBlkInfo@TS7Worker@@IEAAXAEAHPEAUTReqDataBlockInfo@@@Z
+	?BLK_ListAll@TS7Worker@@IEAAXAEAUTCB@@@Z
+	?BLK_ListBoT@TS7Worker@@IEAAXE_NAEAUTCB@@@Z
+	?BLK_NoResource_GetBlkInfo@TS7Worker@@IEAAXPEAUTResDataBlockInfo@@AEAUTCB@@@Z
+	?BLK_NoResource_ListBoT@TS7Worker@@IEAAXPEAUTDataFunGetBot@@AEAUTCB@@@Z
+	?BRecv@TSnap7Partner@@QEAAHAEAIPEAXAEAHI@Z
+	?BSend@TSnap7Partner@@QEAAHIPEAXH@Z
+	?BlockInfoText@@YAPEADAEAUTSrvEvent@@PEAD@Z
+	?BlockRecv@TSnap7Partner@@AEAA_NXZ
+	?BlockSend@TSnap7Partner@@AEAA_NXZ
+	?BuildControlPDU@TIsoTcpSocket@@MEAAHXZ
+	?CTRead@TSnap7MicroClient@@QEAAHHHPEAX@Z
+	?CTWrite@TSnap7MicroClient@@QEAAHHHPEAX@Z
+	?CanAccept@TCustomMsgServer@@MEAA_N_K@Z
+	?CanRead@TMsgSocket@@QEAA_NH@Z
+	?CanRead@TRawSocketPinger@@AEAA_NH@Z
+	?CanWrite@TMsgSocket@@AEAA_NH@Z
+	?CheckAsBRecvCompletion@TSnap7Partner@@QEAA_NAEAHAEAIPEAX0@Z
+	?CheckAsBSendCompletion@TSnap7Partner@@QEAA_NAEAH@Z
+	?CheckAsCompletion@TSnap7Client@@QEAA_NAEAH@Z
+	?CheckBlock@TSnap7MicroClient@@AEAAHHHPEAXH@Z
+	?CheckPDU@TIsoTcpSocket@@AEAAHPEAXE@Z
+	?CheckPDU_in@TS7Worker@@AEAA_NH@Z
+	?ClearRecv@TSnap7Partner@@AEAAXXZ
+	?ClearSessionPassword@TSnap7MicroClient@@QEAAHXZ
+	?CliTextOf@@YAPEADHPEAD@Z
+	?ClockText@@YAPEADGPEAD@Z
+	?CloseThread@TSnap7Client@@AEAAXXZ
+	?CloseWorker@TSnap7Partner@@AEAAXXZ
+	?ClrError@TSnap7Peer@@IEAAXXZ
+	?ClrIsoError@TIsoTcpSocket@@IEAAXXZ
+	?Compress@TSnap7MicroClient@@QEAAHH@Z
+	?Connect@TSnap7MicroClient@@QEAAHXZ
+	?ConnectTo@TSnap7MicroClient@@QEAAHPEBDHH@Z
+	?ConnectToPeer@TSnap7Partner@@IEAA_NXZ
+	?ConnectionConfirm@TSnap7Partner@@AEAA_NXZ
+	?ControlText@@YAPEADGPEAD@Z
+	?CopyRamToRom@TSnap7MicroClient@@QEAAHH@Z
+	?CpuError@TSnap7MicroClient@@AEAAHH@Z
+	?CreateServer@TServersManager@@AEAAHIAEAPEAVTConnectionServer@@@Z
+	?CreateSocket@TMsgSocket@@IEAAXXZ
+	?CreateWorkerSocket@TCustomMsgServer@@MEAAPEAVTMsgSocket@@_K@Z
+	?CreateWorkerSocket@TSnap7Server@@MEAAPEAVTMsgSocket@@_K@Z
+	?DBFill@TSnap7MicroClient@@QEAAHHH@Z
+	?DBGet@TSnap7MicroClient@@QEAAHHPEAXAEAH@Z
+	?DBRead@TSnap7MicroClient@@QEAAHHHHPEAX@Z
+	?DBWrite@TSnap7MicroClient@@QEAAHHHHPEAX@Z
+	?DWordAt@TSnap7MicroClient@@AEAAIPEAX@Z
+	?DataSizeByte@TS7Worker@@IEAAHH@Z
+	?DataSizeByte@TSnap7MicroClient@@IEAAHH@Z
+	?Delete@TCustomMsgServer@@IEAAXH@Z
+	?Delete@TSnap7MicroClient@@QEAAHHH@Z
+	?DeltaTime@@YAIAEAI@Z
+	?DestroySocket@TMsgSocket@@AEAAXXZ
+	?Disconnect@TSnap7MicroClient@@QEAAHXZ
+	?Disconnect@TSnap7Partner@@IEAAXXZ
+	?DisposeAll@TSnap7Server@@AEAAXXZ
+	?DoCompletion@TSnap7Client@@IEAAXXZ
+	?DoEvent@TCustomMsgServer@@MEAAXHIGGGGG@Z
+	?DoEvent@TS7Worker@@IEAAXIGGGGG@Z
+	?DoReadArea@TSnap7Server@@IEAA_NHHHHHHPEAX@Z
+	?DoReadEvent@TS7Worker@@IEAAXIGGGGG@Z
+	?DoReadEvent@TSnap7Server@@IEAAXHIGGGGG@Z
+	?DoWriteArea@TSnap7Server@@IEAA_NHHHHHHPEAX@Z
+	?Download@TSnap7MicroClient@@QEAAHHPEAXH@Z
+	?DownloadText@@YAPEADAEAUTSrvEvent@@PEAD@Z
+	?EBRead@TSnap7MicroClient@@QEAAHHHPEAX@Z
+	?EBWrite@TSnap7MicroClient@@QEAAHHHPEAX@Z
+	?Empty@TMsgEventQueue@@QEAA_NXZ
+	?Enter@TSnapCriticalSection@@QEAAXXZ
+	?ErrCliText@@YAPEADHPEADH@Z
+	?ErrParText@@YAPEADHPEADH@Z
+	?ErrSrvText@@YAPEADHPEADH@Z
+	?EventEmpty@TCustomMsgServer@@QEAA_NXZ
+	?EventsFlush@TCustomMsgServer@@QEAAXXZ
+	?EvtSrvText@@YAPEADAEAUTSrvEvent@@PEADH@Z
+	?Execute@TClientThread@@UEAAXXZ
+	?Execute@TConnListenerThread@@UEAAXXZ
+	?Execute@TEcoTcpWorker@@UEAA_NXZ
+	?Execute@TIsoTcpWorker@@UEAA_NXZ
+	?Execute@TMsgListenerThread@@UEAAXXZ
+	?Execute@TMsgSocket@@UEAA_NXZ
+	?Execute@TMsgWorkerThread@@UEAAXXZ
+	?Execute@TPartnerThread@@MEAAXXZ
+	?Execute@TSnap7Partner@@MEAA_NXZ
+	?Execute@TSnapThread@@UEAAXXZ
+	?ExecuteRecv@TIsoTcpWorker@@MEAA_NXZ
+	?ExecuteRecv@TS7Worker@@MEAA_NXZ
+	?ExecuteSend@TIsoTcpWorker@@MEAA_NXZ
+	?Extract@TMsgEventQueue@@QEAA_NPEAX@Z
+	?FillTime@TS7Worker@@AEAAXPEAUTS7Time@@@Z
+	?FillTime@TSnap7MicroClient@@AEAAXGPEAD@Z
+	?FindDB@TSnap7Server@@IEAAPEAUTS7Area@@G@Z
+	?FindFirstFreeDB@TSnap7Server@@AEAAHXZ
+	?FindPartner@TConnectionServer@@AEAAPEAVTSnap7Partner@@I@Z
+	?FirstFree@TConnectionServer@@IEAAHXZ
+	?FirstFree@TCustomMsgServer@@AEAAHXZ
+	?Flush@TMsgEventQueue@@QEAAXXZ
+	?ForceClose@TMsgSocket@@QEAAXXZ
+	?FragmentSkipped@TIsoTcpSocket@@MEAAXH@Z
+	?FragmentSkipped@TS7Worker@@MEAAXH@Z
+	?Full@TMsgEventQueue@@QEAA_NXZ
+	?FullUpload@TSnap7MicroClient@@QEAAHHHPEAXAEAH@Z
+	?GetAgBlockInfo@TSnap7MicroClient@@QEAAHHHPEAUTS7BlockInfo@@@Z
+	?GetArea@TS7Worker@@IEAAPEAUTS7Area@@EG@Z
+	?GetCpInfo@TSnap7MicroClient@@QEAAHPEAUTS7CpInfo@@@Z
+	?GetCpuInfo@TSnap7MicroClient@@QEAAHPEAUTS7CpuInfo@@@Z
+	?GetLastSocketError@TMsgSocket@@AEAAHXZ
+	?GetLocal@TMsgSocket@@AEAAXXZ
+	?GetNextByte@TSnap7Partner@@AEAAEXZ
+	?GetNextWord@TSnap7Peer@@IEAAGXZ
+	?GetOrderCode@TSnap7MicroClient@@QEAAHPEAUTS7OrderCode@@@Z
+	?GetParam@TSnap7Client@@QEAAHHPEAX@Z
+	?GetParam@TSnap7MicroClient@@QEAAHHPEAX@Z
+	?GetParam@TSnap7Partner@@QEAAHHPEAX@Z
+	?GetParam@TSnap7Server@@QEAAHHPEAX@Z
+	?GetPgBlockInfo@TSnap7MicroClient@@QEAAHPEAXPEAUTS7BlockInfo@@H@Z
+	?GetPlcDateTime@TSnap7MicroClient@@QEAAHAEAUtm@@@Z
+	?GetPlcStatus@TSnap7MicroClient@@QEAAHAEAH@Z
+	?GetProtection@TSnap7MicroClient@@QEAAHPEAUTS7Protection@@@Z
+	?GetRemote@TMsgSocket@@AEAAXXZ
+	?GetServer@TServersManager@@QEAAHIAEAPEAVTConnectionServer@@@Z
+	?GetSin@TMsgSocket@@AEAAXUsockaddr_in@@PEADAEAG@Z
+	?GotSocket@TMsgSocket@@IEAAXXZ
+	?IcmpDone@@YAXXZ
+	?IcmpInit@@YA_NXZ
+	?Incoming@TConnectionServer@@IEAAX_K@Z
+	?Incoming@TCustomMsgServer@@MEAAX_K@Z
+	?IndexOfDB@TSnap7Server@@AEAAHG@Z
+	?InitPacket@TRawSocketPinger@@AEAAXXZ
+	?Insert@TMsgEventQueue@@QEAAXPEAX@Z
+	?IntToString@@YAPEADHPEAD@Z
+	?IpAddressToString@@YAPEADHPEAD@Z
+	?IsoConfirmConnection@TIsoTcpSocket@@IEAAHE@Z
+	?IsoPDUReady@TIsoTcpSocket@@QEAA_NXZ
+	?IsoParsePDU@TIsoTcpSocket@@MEAAXUTIsoControlPDU@@@Z
+	?IsoPeek@TIsoTcpSocket@@QEAAXPEAXAEAW4TPDUKind@@@Z
+	?IsoPerformCommand@TIsoTcpWorker@@MEAA_NAEAH@Z
+	?IsoPerformCommand@TS7Worker@@MEAA_NAEAH@Z
+	?IsoTextOf@@YAPEADHPEAD@Z
+	?Join@TSnapThread@@QEAAXXZ
+	?Kill@TSnapThread@@QEAAXXZ
+	?KillAll@TCustomMsgServer@@IEAAXXZ
+	?Leave@TSnapCriticalSection@@QEAAXXZ
+	?ListBlocks@TSnap7MicroClient@@QEAAHPEAUTS7BlocksList@@@Z
+	?ListBlocksOfType@TSnap7MicroClient@@QEAAHHPEAY0CAAA@GAEAH@Z
+	?Lock@TConnectionServer@@AEAAXXZ
+	?Lock@TServersManager@@AEAAXXZ
+	?LockArea@TSnap7Server@@QEAAHHG@Z
+	?LockList@TCustomMsgServer@@AEAAXXZ
+	?MBRead@TSnap7MicroClient@@QEAAHHHPEAX@Z
+	?MBWrite@TSnap7MicroClient@@QEAAHHHPEAX@Z
+	?Msg_CloseSocket@@YAX_K@Z
+	?Msg_GetSockAddr@@YAI_K@Z
+	?NegotiatePDULength@TSnap7Peer@@IEAAHXZ
+	?NumToString@@YAPEADHHHPEAD@Z
+	?OpenThread@TSnap7Client@@AEAAXXZ
+	?PDUSize@TIsoTcpSocket@@IEAAHPEAX@Z
+	?PDUText@@YAPEADAEAUTSrvEvent@@PEAD@Z
+	?PacketChecksum@TRawSocketPinger@@AEAAGXZ
+	?PacketReady@TMsgSocket@@QEAA_NH@Z
+	?ParTextOf@@YAPEADHPEAD@Z
+	?PeekPacket@TMsgSocket@@QEAAHPEAXH@Z
+	?PeerConnect@TSnap7Peer@@QEAAHXZ
+	?PeerDisconnect@TSnap7Peer@@QEAAXXZ
+	?PerformFunctionControl@TS7Worker@@IEAA_NE@Z
+	?PerformFunctionDownload@TS7Worker@@IEAA_NXZ
+	?PerformFunctionNegotiate@TS7Worker@@IEAA_NXZ
+	?PerformFunctionNegotiate@TSnap7Partner@@IEAA_NXZ
+	?PerformFunctionRead@TS7Worker@@IEAA_NXZ
+	?PerformFunctionUpload@TS7Worker@@IEAA_NXZ
+	?PerformFunctionWrite@TS7Worker@@IEAA_NXZ
+	?PerformGetClock@TS7Worker@@IEAA_NXZ
+	?PerformGroupBlockInfo@TS7Worker@@IEAA_NXZ
+	?PerformGroupCyclicData@TS7Worker@@IEAA_NXZ
+	?PerformGroupProgrammer@TS7Worker@@IEAA_NXZ
+	?PerformGroupSZL@TS7Worker@@IEAA_NXZ
+	?PerformGroupSecurity@TS7Worker@@IEAA_NXZ
+	?PerformOperation@TSnap7MicroClient@@IEAAHXZ
+	?PerformPDUAck@TS7Worker@@IEAA_NAEAH@Z
+	?PerformPDURequest@TS7Worker@@IEAA_NAEAH@Z
+	?PerformPDUUsrData@TS7Worker@@IEAA_NAEAH@Z
+	?PerformSetClock@TS7Worker@@IEAA_NXZ
+	?PickData@TSnap7Partner@@AEAA_NXZ
+	?PickEvent@TCustomMsgServer@@QEAA_NPEAX@Z
+	?Ping@TMsgSocket@@QEAA_NPEAD@Z
+	?Ping@TMsgSocket@@QEAA_NUsockaddr_in@@@Z
+	?Ping@TPinger@@QEAA_NIH@Z
+	?Ping@TPinger@@QEAA_NPEADH@Z
+	?Ping@TRawSocketPinger@@QEAA_NIH@Z
+	?PlcColdStart@TSnap7MicroClient@@QEAAHXZ
+	?PlcHotStart@TSnap7MicroClient@@QEAAHXZ
+	?PlcStop@TSnap7MicroClient@@QEAAHXZ
+	?Purge@TMsgSocket@@IEAAXXZ
+	?RA_NotFound@TS7Worker@@IEAAGPEAUTResFunReadItem@@AEAUTEv@@@Z
+	?RA_OutOfRange@TS7Worker@@IEAAGPEAUTResFunReadItem@@AEAUTEv@@@Z
+	?RA_SizeOverPDU@TS7Worker@@IEAAGPEAUTResFunReadItem@@AEAUTEv@@@Z
+	?RawPing@TPinger@@AEAA_NIH@Z
+	?RawSocketsCheck@@YA_NXZ
+	?ReadArea@TS7Worker@@IEAAGPEAUTResFunReadItem@@PEAUTReqFunReadItem@@AEAHAEAUTEv@@@Z
+	?ReadArea@TSnap7MicroClient@@QEAAHHHHHHPEAX@Z
+	?ReadMultiVars@TSnap7MicroClient@@QEAAHPEAUTS7DataItem@@H@Z
+	?ReadSZL@TSnap7MicroClient@@QEAAHHHPEAUTS7SZL@@AEAH@Z
+	?ReadSZLList@TSnap7MicroClient@@QEAAHPEAUTS7SZLList@@AEAH@Z
+	?ReadSZLText@@YAPEADAEAUTSrvEvent@@PEAD@Z
+	?Receive@TMsgSocket@@QEAAHPEAXHAEAH@Z
+	?RecvPacket@TMsgSocket@@QEAAHPEAXH@Z
+	?RegisterArea@TSnap7Server@@QEAAHHGPEAXG@Z
+	?RegisterDB@TSnap7Server@@IEAAHGPEAXG@Z
+	?RegisterPartner@TConnectionServer@@QEAAHPEAVTSnap7Partner@@@Z
+	?RegisterSys@TSnap7Server@@IEAAHHPEAXG@Z
+	?RemovePartner@TConnectionServer@@QEAAXPEAVTSnap7Partner@@@Z
+	?RemovePartner@TServersManager@@QEAAXPEAVTConnectionServer@@PEAVTSnap7Partner@@@Z
+	?Reset@TSnap7Client@@QEAAH_N@Z
+	?Reset@TSnap7MicroClient@@QEAAH_N@Z
+	?Reset@TSnapEvent@@QEAAXXZ
+	?SZLData@TS7Worker@@IEAAXPEAXH@Z
+	?SZLNotAvailable@TS7Worker@@IEAAXXZ
+	?SZLSystemState@TS7Worker@@IEAAXXZ
+	?SZL_ID131_IDX003@TS7Worker@@IEAAXXZ
+	?SZL_ID424@TS7Worker@@IEAAXXZ
+	?SckAccept@TMsgSocket@@QEAA_KXZ
+	?SckBind@TMsgSocket@@QEAAHXZ
+	?SckConnect@TMsgSocket@@QEAAHXZ
+	?SckDisconnect@TMsgSocket@@QEAAXXZ
+	?SckListen@TMsgSocket@@QEAAHXZ
+	?SecurityText@@YAPEADAEAUTSrvEvent@@PEAD@Z
+	?SendPacket@TMsgSocket@@QEAAHPEAXH@Z
+	?SenderText@@YAPEADAEAUTSrvEvent@@PEAD@Z
+	?ServersManager_GetServer@@YAHIAEAPEAVTConnectionServer@@@Z
+	?ServersManager_RemovePartner@@YAXPEAVTConnectionServer@@PEAVTSnap7Partner@@@Z
+	?Set@TSnapEvent@@QEAAXXZ
+	?SetAsCallback@TSnap7Client@@QEAAHP6AXPEAXHH@Z0@Z
+	?SetConnectionParams@TSnap7MicroClient@@QEAAXPEBDGG@Z
+	?SetConnectionType@TSnap7MicroClient@@QEAAXG@Z
+	?SetError@TSnap7Peer@@IEAAHH@Z
+	?SetEventsCallBack@TCustomMsgServer@@QEAAHP6AXPEAXPEAUTSrvEvent@@H@Z0@Z
+	?SetIsoError@TIsoTcpSocket@@IEAAHH@Z
+	?SetParam@TSnap7Client@@QEAAHHPEAX@Z
+	?SetParam@TSnap7MicroClient@@QEAAHHPEAX@Z
+	?SetParam@TSnap7Partner@@QEAAHHPEAX@Z
+	?SetParam@TSnap7Server@@QEAAHHPEAX@Z
+	?SetPlcDateTime@TSnap7MicroClient@@QEAAHPEAUtm@@@Z
+	?SetPlcSystemDateTime@TSnap7MicroClient@@QEAAHXZ
+	?SetRWAreaCallBack@TSnap7Server@@QEAAHP6AHPEAXHHPEAUTS7Tag@@0@Z0@Z
+	?SetReadEventsCallBack@TSnap7Server@@QEAAHP6AXPEAXPEAUTSrvEvent@@H@Z0@Z
+	?SetRecvCallback@TSnap7Partner@@QEAAHP6AXPEAXHI0H@Z0@Z
+	?SetSendCallback@TSnap7Partner@@QEAAHP6AXPEAXH@Z0@Z
+	?SetSessionPassword@TSnap7MicroClient@@QEAAHPEAD@Z
+	?SetSin@TMsgSocket@@AEAAXAEAUsockaddr_in@@PEADG@Z
+	?SetSocket@TMsgSocket@@QEAAX_K@Z
+	?SetSocketOptions@TMsgSocket@@AEAAXXZ
+	?SockCheck@TMsgSocket@@AEAAHH@Z
+	?SrvTextOf@@YAPEADHPEAD@Z
+	?Start@TConnectionServer@@IEAAHXZ
+	?Start@TCustomMsgServer@@QEAAHXZ
+	?Start@TSnap7Partner@@QEAAHXZ
+	?Start@TSnapThread@@QEAAXXZ
+	?StartAsyncJob@TSnap7Client@@AEAAXXZ
+	?StartListener@TCustomMsgServer@@AEAAHXZ
+	?StartTo@TConnectionServer@@QEAAHPEBD@Z
+	?StartTo@TCustomMsgServer@@QEAAHPEBDG@Z
+	?StartTo@TSnap7Partner@@QEAAHPEBD0GG@Z
+	?StartTo@TSnap7Server@@QEAAHPEBD@Z
+	?Status@TSnap7Partner@@QEAAHXZ
+	?Stop@TConnectionServer@@QEAAXXZ
+	?Stop@TCustomMsgServer@@QEAAXXZ
+	?Stop@TSnap7Partner@@QEAAHXZ
+	?StrBlockType@@YAPEADGPEAD@Z
+	?SubBlockToBlock@TSnap7MicroClient@@AEAAHH@Z
+	?SwapDWord@TSnapBase@@IEAAII@Z
+	?SwapWord@TSnapBase@@IEAAGG@Z
+	?SysGetTick@@YAIXZ
+	?SysSleep@@YAXI@Z
+	?TMRead@TSnap7MicroClient@@QEAAHHHPEAX@Z
+	?TMWrite@TSnap7MicroClient@@QEAAHHHPEAX@Z
+	?TcpServerEventText@@YAPEADAEAUTSrvEvent@@PEAD@Z
+	?TcpTextOf@@YAPEADHPEAD@Z
+	?Terminate@TSnapThread@@QEAAXXZ
+	?TerminateAll@TCustomMsgServer@@MEAAXXZ
+	?ThreadCreate@TSnapThread@@AEAAXXZ
+	?ThreadJoin@TSnapThread@@AEAAXXZ
+	?ThreadKill@TSnapThread@@AEAAXXZ
+	?ThreadProc@@YAKPEAX@Z
+	?ThreadWait@TSnapThread@@AEAAI_K@Z
+	?Time@TSnap7MicroClient@@QEAAHXZ
+	?TimeToString@@YAPEAD_JPEAD@Z
+	?TxtArea@@YAPEADAEAUTSrvEvent@@PEAD@Z
+	?TxtDataResult@@YAPEADAEAUTSrvEvent@@PEAD@Z
+	?TxtStartSize@@YAPEADAEAUTSrvEvent@@PEAD@Z
+	?Unlock@TConnectionServer@@AEAAXXZ
+	?Unlock@TServersManager@@AEAAXXZ
+	?UnlockArea@TSnap7Server@@QEAAHHG@Z
+	?UnlockList@TCustomMsgServer@@AEAAXXZ
+	?UnregisterArea@TSnap7Server@@QEAAHHG@Z
+	?UnregisterDB@TSnap7Server@@IEAAHG@Z
+	?UnregisterSys@TSnap7Server@@IEAAHH@Z
+	?Upload@TSnap7MicroClient@@QEAAHHHPEAXAEAH@Z
+	?UploadText@@YAPEADAEAUTSrvEvent@@PEAD@Z
+	?WA_DataSizeMismatch@TS7Worker@@IEAAEAEAUTEv@@@Z
+	?WA_InvalidTransportSize@TS7Worker@@IEAAEAEAUTEv@@@Z
+	?WA_NotFound@TS7Worker@@IEAAEAEAUTEv@@@Z
+	?WA_OutOfRange@TS7Worker@@IEAAEAEAUTEv@@@Z
+	?WaitAsBSendCompletion@TSnap7Partner@@QEAAHI@Z
+	?WaitAsCompletion@TSnap7Client@@QEAAHK@Z
+	?WaitFor@TSnapEvent@@QEAAI_J@Z
+	?WaitFor@TSnapThread@@QEAAI_K@Z
+	?WaitForData@TMsgSocket@@IEAAHHH@Z
+	?WaitForever@TSnapEvent@@QEAAIXZ
+	?WaitingData@TMsgSocket@@IEAAHXZ
+	?WinPing@TPinger@@AEAA_NIH@Z
+	?WordToBCD@TSnap7MicroClient@@AEAAEG@Z
+	?WriteArea@TS7Worker@@IEAAEPEAUTReqFunWriteDataItem@@PEAUTReqFunWriteItem@@AEAUTEv@@@Z
+	?WriteArea@TSnap7MicroClient@@QEAAHHHHHHPEAX@Z
+	?WriteMultiVars@TSnap7MicroClient@@QEAAHPEAUTS7DataItem@@H@Z
+	?isoConnect@TIsoTcpSocket@@QEAAHXZ
+	?isoDisconnect@TIsoTcpSocket@@QEAAH_N@Z
+	?isoExchangeBuffer@TIsoTcpSocket@@QEAAHPEAXAEAH@Z
+	?isoExchangePDU@TIsoTcpSocket@@QEAAHPEAUTIsoDataPDU@@@Z
+	?isoRecvBuffer@TIsoTcpSocket@@QEAAHPEAXAEAH@Z
+	?isoRecvFragment@TIsoTcpSocket@@AEAAHPEAXHAEAHAEA_N@Z
+	?isoRecvPDU@TIsoTcpSocket@@QEAAHPEAUTIsoDataPDU@@@Z
+	?isoSendBuffer@TIsoTcpSocket@@QEAAHPEAXH@Z
+	?isoSendPDU@TIsoTcpSocket@@QEAAHPEAUTIsoDataPDU@@@Z
+	?libdone@@YAXXZ
+	?libinit@@YAXXZ
+	?opAgBlockInfo@TSnap7MicroClient@@AEAAHXZ
+	?opClearPassword@TSnap7MicroClient@@AEAAHXZ
+	?opCompress@TSnap7MicroClient@@AEAAHXZ
+	?opCopyRamToRom@TSnap7MicroClient@@AEAAHXZ
+	?opDBFill@TSnap7MicroClient@@AEAAHXZ
+	?opDBGet@TSnap7MicroClient@@AEAAHXZ
+	?opDelete@TSnap7MicroClient@@AEAAHXZ
+	?opDownload@TSnap7MicroClient@@AEAAHXZ
+	?opGetCpInfo@TSnap7MicroClient@@AEAAHXZ
+	?opGetCpuInfo@TSnap7MicroClient@@AEAAHXZ
+	?opGetDateTime@TSnap7MicroClient@@AEAAHXZ
+	?opGetOrderCode@TSnap7MicroClient@@AEAAHXZ
+	?opGetPlcStatus@TSnap7MicroClient@@AEAAHXZ
+	?opGetProtection@TSnap7MicroClient@@AEAAHXZ
+	?opListBlocks@TSnap7MicroClient@@AEAAHXZ
+	?opListBlocksOfType@TSnap7MicroClient@@AEAAHXZ
+	?opPlcColdStart@TSnap7MicroClient@@AEAAHXZ
+	?opPlcHotStart@TSnap7MicroClient@@AEAAHXZ
+	?opPlcStop@TSnap7MicroClient@@AEAAHXZ
+	?opReadArea@TSnap7MicroClient@@AEAAHXZ
+	?opReadMultiVars@TSnap7MicroClient@@AEAAHXZ
+	?opReadSZL@TSnap7MicroClient@@AEAAHXZ
+	?opReadSZLList@TSnap7MicroClient@@AEAAHXZ
+	?opSetDateTime@TSnap7MicroClient@@AEAAHXZ
+	?opSetPassword@TSnap7MicroClient@@AEAAHXZ
+	?opUpload@TSnap7MicroClient@@AEAAHXZ
+	?opWriteArea@TSnap7MicroClient@@AEAAHXZ
+	?opWriteMultiVars@TSnap7MicroClient@@AEAAHXZ
+	Cli_ABRead
+	Cli_ABWrite
+	Cli_AsABRead
+	Cli_AsABWrite
+	Cli_AsCTRead
+	Cli_AsCTWrite
+	Cli_AsCompress
+	Cli_AsCopyRamToRom
+	Cli_AsDBFill
+	Cli_AsDBGet
+	Cli_AsDBRead
+	Cli_AsDBWrite
+	Cli_AsDownload
+	Cli_AsEBRead
+	Cli_AsEBWrite
+	Cli_AsFullUpload
+	Cli_AsListBlocksOfType
+	Cli_AsMBRead
+	Cli_AsMBWrite
+	Cli_AsReadArea
+	Cli_AsReadSZL
+	Cli_AsReadSZLList
+	Cli_AsTMRead
+	Cli_AsTMWrite
+	Cli_AsUpload
+	Cli_AsWriteArea
+	Cli_CTRead
+	Cli_CTWrite
+	Cli_CheckAsCompletion
+	Cli_ClearSessionPassword
+	Cli_Compress
+	Cli_Connect
+	Cli_ConnectTo
+	Cli_CopyRamToRom
+	Cli_Create
+	Cli_DBFill
+	Cli_DBGet
+	Cli_DBRead
+	Cli_DBWrite
+	Cli_Delete
+	Cli_Destroy
+	Cli_Disconnect
+	Cli_Download
+	Cli_EBRead
+	Cli_EBWrite
+	Cli_ErrorText
+	Cli_FullUpload
+	Cli_GetAgBlockInfo
+	Cli_GetConnected
+	Cli_GetCpInfo
+	Cli_GetCpuInfo
+	Cli_GetExecTime
+	Cli_GetLastError
+	Cli_GetOrderCode
+	Cli_GetParam
+	Cli_GetPduLength
+	Cli_GetPgBlockInfo
+	Cli_GetPlcDateTime
+	Cli_GetPlcStatus
+	Cli_GetProtection
+	Cli_IsoExchangeBuffer
+	Cli_ListBlocks
+	Cli_ListBlocksOfType
+	Cli_MBRead
+	Cli_MBWrite
+	Cli_PlcColdStart
+	Cli_PlcHotStart
+	Cli_PlcStop
+	Cli_ReadArea
+	Cli_ReadMultiVars
+	Cli_ReadSZL
+	Cli_ReadSZLList
+	Cli_SetAsCallback
+	Cli_SetConnectionParams
+	Cli_SetConnectionType
+	Cli_SetParam
+	Cli_SetPlcDateTime
+	Cli_SetPlcSystemDateTime
+	Cli_SetSessionPassword
+	Cli_TMRead
+	Cli_TMWrite
+	Cli_Upload
+	Cli_WaitAsCompletion
+	Cli_WriteArea
+	Cli_WriteMultiVars
+	DllMain
+	Par_AsBSend
+	Par_BRecv
+	Par_BSend
+	Par_CheckAsBRecvCompletion
+	Par_CheckAsBSendCompletion
+	Par_Create
+	Par_Destroy
+	Par_ErrorText
+	Par_GetLastError
+	Par_GetParam
+	Par_GetStats
+	Par_GetStatus
+	Par_GetTimes
+	Par_SetParam
+	Par_SetRecvCallback
+	Par_SetSendCallback
+	Par_Start
+	Par_StartTo
+	Par_Stop
+	Par_WaitAsBSendCompletion
+	Srv_ClearEvents
+	Srv_Create
+	Srv_Destroy
+	Srv_ErrorText
+	Srv_EventText
+	Srv_GetMask
+	Srv_GetParam
+	Srv_GetStatus
+	Srv_LockArea
+	Srv_PickEvent
+	Srv_RegisterArea
+	Srv_SetCpuStatus
+	Srv_SetEventsCallback
+	Srv_SetMask
+	Srv_SetParam
+	Srv_SetRWAreaCallback
+	Srv_SetReadEventsCallback
+	Srv_Start
+	Srv_StartTo
+	Srv_Stop
+	Srv_UnlockArea
+	Srv_UnregisterArea

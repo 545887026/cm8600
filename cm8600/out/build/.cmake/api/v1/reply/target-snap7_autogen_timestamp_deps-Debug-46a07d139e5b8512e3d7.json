@@ -1,0 +1,27 @@
+{
+	"backtrace" : 0,
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : 
+		[
+			"third_party/snap7/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			}
+		]
+	},
+	"id" : "snap7_autogen_timestamp_deps::@b5871fe32e5748138f58",
+	"isGeneratorProvided" : true,
+	"name" : "snap7_autogen_timestamp_deps",
+	"paths" : 
+	{
+		"build" : "third_party/snap7",
+		"source" : "third_party/snap7"
+	},
+	"sources" : [],
+	"type" : "UTILITY"
+}

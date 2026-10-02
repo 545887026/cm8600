@@ -1,0 +1,197 @@
+{
+	"AUTOGEN_COMMAND_LINE_LENGTH_MAX" : 32000,
+	"BUILD_DIR" : "D:/svn/\u5929\u610f/cm8600/out/build/third_party/snap7/snap7_autogen",
+	"CMAKE_BINARY_DIR" : "D:/svn/\u5929\u610f/cm8600/out/build",
+	"CMAKE_CURRENT_BINARY_DIR" : "D:/svn/\u5929\u610f/cm8600/out/build/third_party/snap7",
+	"CMAKE_CURRENT_SOURCE_DIR" : "D:/svn/\u5929\u610f/cm8600/third_party/snap7",
+	"CMAKE_EXECUTABLE" : "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/cmake.exe",
+	"CMAKE_LIST_FILES" : [ "D:/svn/\u5929\u610f/cm8600/third_party/snap7/CMakeLists.txt" ],
+	"CMAKE_SOURCE_DIR" : "D:/svn/\u5929\u610f/cm8600",
+	"CROSS_CONFIG" : false,
+	"DEP_FILE" : "D:/svn/\u5929\u610f/cm8600/out/build/third_party/snap7/snap7_autogen/deps",
+	"DEP_FILE_RULE_NAME" : "snap7_autogen/timestamp",
+	"HEADERS" : 
+	[
+		[
+			"D:/svn/\u5929\u610f/cm8600/third_party/snap7-full-1.4.2/snap7-full-1.4.2/src/core/s7_client.h",
+			"MU",
+			"MRDVCO2M74/moc_s7_client.cpp",
+			null
+		],
+		[
+			"D:/svn/\u5929\u610f/cm8600/third_party/snap7-full-1.4.2/snap7-full-1.4.2/src/core/s7_isotcp.h",
+			"MU",
+			"MRDVCO2M74/moc_s7_isotcp.cpp",
+			null
+		],
+		[
+			"D:/svn/\u5929\u610f/cm8600/third_party/snap7-full-1.4.2/snap7-full-1.4.2/src/core/s7_micro_client.h",
+			"MU",
+			"MRDVCO2M74/moc_s7_micro_client.cpp",
+			null
+		],
+		[
+			"D:/svn/\u5929\u610f/cm8600/third_party/snap7-full-1.4.2/snap7-full-1.4.2/src/core/s7_partner.h",
+			"MU",
+			"MRDVCO2M74/moc_s7_partner.cpp",
+			null
+		],
+		[
+			"D:/svn/\u5929\u610f/cm8600/third_party/snap7-full-1.4.2/snap7-full-1.4.2/src/core/s7_peer.h",
+			"MU",
+			"MRDVCO2M74/moc_s7_peer.cpp",
+			null
+		],
+		[
+			"D:/svn/\u5929\u610f/cm8600/third_party/snap7-full-1.4.2/snap7-full-1.4.2/src/core/s7_server.h",
+			"MU",
+			"MRDVCO2M74/moc_s7_server.cpp",
+			null
+		],
+		[
+			"D:/svn/\u5929\u610f/cm8600/third_party/snap7-full-1.4.2/snap7-full-1.4.2/src/core/s7_text.h",
+			"MU",
+			"MRDVCO2M74/moc_s7_text.cpp",
+			null
+		],
+		[
+			"D:/svn/\u5929\u610f/cm8600/third_party/snap7-full-1.4.2/snap7-full-1.4.2/src/lib/snap7_libmain.h",
+			"MU",
+			"PFFIWRGN24/moc_snap7_libmain.cpp",
+			null
+		],
+		[
+			"D:/svn/\u5929\u610f/cm8600/third_party/snap7-full-1.4.2/snap7-full-1.4.2/src/sys/snap_msgsock.h",
+			"MU",
+			"XA4IFTC74C/moc_snap_msgsock.cpp",
+			null
+		],
+		[
+			"D:/svn/\u5929\u610f/cm8600/third_party/snap7-full-1.4.2/snap7-full-1.4.2/src/sys/snap_sysutils.h",
+			"MU",
+			"XA4IFTC74C/moc_snap_sysutils.cpp",
+			null
+		],
+		[
+			"D:/svn/\u5929\u610f/cm8600/third_party/snap7-full-1.4.2/snap7-full-1.4.2/src/sys/snap_tcpsrvr.h",
+			"MU",
+			"XA4IFTC74C/moc_snap_tcpsrvr.cpp",
+			null
+		],
+		[
+			"D:/svn/\u5929\u610f/cm8600/third_party/snap7-full-1.4.2/snap7-full-1.4.2/src/sys/snap_threads.h",
+			"MU",
+			"XA4IFTC74C/moc_snap_threads.cpp",
+			null
+		]
+	],
+	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
+	"INCLUDE_DIR" : "D:/svn/\u5929\u610f/cm8600/out/build/third_party/snap7/snap7_autogen/include",
+	"MOC_COMPILATION_FILE" : "D:/svn/\u5929\u610f/cm8600/out/build/third_party/snap7/snap7_autogen/mocs_compilation.cpp",
+	"MOC_DEFINITIONS" : 
+	[
+		"WIN32",
+		"_CRT_SECURE_NO_WARNINGS",
+		"_WINSOCK_DEPRECATED_NO_WARNINGS",
+		"snap7_EXPORTS"
+	],
+	"MOC_DEPEND_FILTERS" : 
+	[
+		[
+			"Q_PLUGIN_METADATA",
+			"[\n][ \t]*Q_PLUGIN_METADATA[ \t]*\\([^\\)]*FILE[ \t]*\"([^\"]+)\""
+		]
+	],
+	"MOC_INCLUDES" : 
+	[
+		"D:/svn/\u5929\u610f/cm8600/out/build/third_party/snap7",
+		"D:/svn/\u5929\u610f/cm8600/third_party/snap7",
+		"D:/svn/\u5929\u610f/cm8600/third_party/snap7-full-1.4.2/snap7-full-1.4.2/src/core",
+		"D:/svn/\u5929\u610f/cm8600/third_party/snap7-full-1.4.2/snap7-full-1.4.2/src/sys",
+		"D:/svn/\u5929\u610f/cm8600/third_party/snap7-full-1.4.2/snap7-full-1.4.2/src/lib"
+	],
+	"MOC_MACRO_NAMES" : [ "Q_OBJECT", "Q_GADGET", "Q_NAMESPACE", "Q_NAMESPACE_EXPORT" ],
+	"MOC_OPTIONS" : [],
+	"MOC_PATH_PREFIX" : false,
+	"MOC_PREDEFS_CMD" : [],
+	"MOC_PREDEFS_FILE" : "",
+	"MOC_RELAXED_MODE" : false,
+	"MOC_SKIP" : [],
+	"MULTI_CONFIG" : false,
+	"PARALLEL" : 24,
+	"PARSE_CACHE_FILE" : "D:/svn/\u5929\u610f/cm8600/out/build/third_party/snap7/CMakeFiles/snap7_autogen.dir/ParseCache.txt",
+	"QT_MOC_EXECUTABLE" : "C:/Qt/5.15.2/msvc2019_64/bin/moc.exe",
+	"QT_UIC_EXECUTABLE" : "C:/Qt/5.15.2/msvc2019_64/bin/uic.exe",
+	"QT_VERSION_MAJOR" : 5,
+	"QT_VERSION_MINOR" : 15,
+	"SETTINGS_FILE" : "D:/svn/\u5929\u610f/cm8600/out/build/third_party/snap7/CMakeFiles/snap7_autogen.dir/AutogenUsed.txt",
+	"SOURCES" : 
+	[
+		[
+			"D:/svn/\u5929\u610f/cm8600/third_party/snap7-full-1.4.2/snap7-full-1.4.2/src/core/s7_client.cpp",
+			"MU",
+			null
+		],
+		[
+			"D:/svn/\u5929\u610f/cm8600/third_party/snap7-full-1.4.2/snap7-full-1.4.2/src/core/s7_isotcp.cpp",
+			"MU",
+			null
+		],
+		[
+			"D:/svn/\u5929\u610f/cm8600/third_party/snap7-full-1.4.2/snap7-full-1.4.2/src/core/s7_micro_client.cpp",
+			"MU",
+			null
+		],
+		[
+			"D:/svn/\u5929\u610f/cm8600/third_party/snap7-full-1.4.2/snap7-full-1.4.2/src/core/s7_partner.cpp",
+			"MU",
+			null
+		],
+		[
+			"D:/svn/\u5929\u610f/cm8600/third_party/snap7-full-1.4.2/snap7-full-1.4.2/src/core/s7_peer.cpp",
+			"MU",
+			null
+		],
+		[
+			"D:/svn/\u5929\u610f/cm8600/third_party/snap7-full-1.4.2/snap7-full-1.4.2/src/core/s7_server.cpp",
+			"MU",
+			null
+		],
+		[
+			"D:/svn/\u5929\u610f/cm8600/third_party/snap7-full-1.4.2/snap7-full-1.4.2/src/core/s7_text.cpp",
+			"MU",
+			null
+		],
+		[
+			"D:/svn/\u5929\u610f/cm8600/third_party/snap7-full-1.4.2/snap7-full-1.4.2/src/lib/snap7_libmain.cpp",
+			"MU",
+			null
+		],
+		[
+			"D:/svn/\u5929\u610f/cm8600/third_party/snap7-full-1.4.2/snap7-full-1.4.2/src/sys/snap_msgsock.cpp",
+			"MU",
+			null
+		],
+		[
+			"D:/svn/\u5929\u610f/cm8600/third_party/snap7-full-1.4.2/snap7-full-1.4.2/src/sys/snap_sysutils.cpp",
+			"MU",
+			null
+		],
+		[
+			"D:/svn/\u5929\u610f/cm8600/third_party/snap7-full-1.4.2/snap7-full-1.4.2/src/sys/snap_tcpsrvr.cpp",
+			"MU",
+			null
+		],
+		[
+			"D:/svn/\u5929\u610f/cm8600/third_party/snap7-full-1.4.2/snap7-full-1.4.2/src/sys/snap_threads.cpp",
+			"MU",
+			null
+		]
+	],
+	"UIC_OPTIONS" : [],
+	"UIC_SEARCH_PATHS" : [],
+	"UIC_SKIP" : [],
+	"UIC_UI_FILES" : [],
+	"USE_BETTER_GRAPH" : false,
+	"VERBOSITY" : 0
+}

@@ -1,0 +1,128 @@
+{
+  "_说明": "CM8600 上位机配置。所有 PLC 地址、单位、对照表都在这里，现场改配置不改代码。",
+
+  "app": {
+    "title": "CM8600 冷媒加注机 上位机",
+    "log_dir": "logs",
+    "log_keep_days": 30
+  },
+
+  "snap7": {
+    "_说明": "运行时用 QLibrary 加载。留空则按 snap7.dll -> 程序目录 -> 系统 PATH 顺序查找。",
+    "dll_path": ""
+  },
+
+  "_channels_说明": "port 真机固定 102。脱机接模拟器时改成 127.0.0.1 + 不同端口，两台可同时跑。",
+  "channels": [
+    { "id": 1, "name": "1# 系统", "ip": "127.0.0.1",  "rack": 0, "slot": 1, "port": 1101, "enabled": true },
+    { "id": 2, "name": "2# 系统", "ip": "192.168.2.10", "rack": 0, "slot": 1, "port": 102, "enabled": true }
+  ],
+
+  "plc": {
+    "_说明": "S7-200 SMART。V 区在 S7 协议里映射为 DB1，故 VB9110 = DB1.DBB9110。M 区独立寻址。",
+    "v_db_number": 1,
+    "poll_interval_ms": 200,
+    "connect_timeout_ms": 3000,
+    "reconnect_interval_ms": 3000,
+
+    "heartbeat": {
+      "_说明": "双向 1Hz 方波：0.5s 置 1 / 0.5s 置 0。3s 内对方电平无变化即判定断链。",
+      "tx_bit": "V9740.0",
+      "rx_bit": "V9741.0",
+      "toggle_ms": 500,
+      "timeout_ms": 3000
+    },
+
+    "query": {
+      "_说明": "PLC 扫码后置位 trigger_bit 并把条码写入 barcode；上位机查完数据写结果位，由 PLC 复位 trigger 与结果位。",
+      "trigger_bit": "V9741.1",
+      "barcode_addr": "VB9750",
+      "barcode_len": 30,
+      "ok_bit": "V9740.1",
+      "fail_bit": "V9740.2"
+    },
+
+    "download": {
+      "_说明": "上位机 -> PLC 的加注参数。VD9700~VD9712 连续 16 字节，一次写完。",
+      "block_addr": "VD9700",
+      "block_size": 16,
+      "oil_qty":          { "addr": "VD9700", "type": "real", "unit": "g" },
+      "refrigerant_qty":  { "addr": "VD9704", "type": "real", "unit": "g" },
+      "vacuum_level":     { "addr": "VD9708", "type": "real", "unit": "Pa" },
+      "vacuum_time":      { "addr": "VD9712", "type": "real", "unit": "s"  },
+      "refrigerant_type": { "addr": "VW9730", "type": "int16", "unit": "编号" }
+    },
+
+    "_charge_done_bit_说明": "加注完成（数据存储）标志位。2026-09-23 对方确认由 M25.7 改为 V9741.2，整套地址全部落在 V 区。PLC 置位，上位机读完后复位。注意该字节 VB9741 的 .0/.1 由 PLC 写，故本程序一律按位写（WLBit），不做读-改-写。",
+    "charge_done_bit": "V9741.2",
+
+    "vacuum_trigger": {
+      "_说明": "2026-09-23 对方确认：只有一个加注完成标志位，不新增抽真空完成位；抽空不合格的数据 PLC 侧直接不记录，能走到这个标志位的必然抽空合格。故固定 on_charge_done。flag 模式保留备用。",
+      "mode": "on_charge_done",
+      "bit": ""
+    },
+
+    "result": {
+      "_说明": "PLC -> 上位机 的结果块，VB9110~VB9249 共 140 字节，全部为裸 ASCII、不足位左侧补空格，解析时 trim。",
+      "block_addr": "VB9110",
+      "block_size": 140,
+      "fields": [
+        { "key": "vacuum_start_date",  "label": "抽真空开始日期", "addr": "VB9110", "len": 10, "type": "ascii", "hint": "2026/09/13" },
+        { "key": "vacuum_start_time",  "label": "抽真空开始时间", "addr": "VB9120", "len": 10, "type": "ascii", "hint": "18:22:05" },
+        { "key": "vacuum_duration",    "label": "抽真空时长",     "addr": "VB9130", "len": 10, "type": "ascii", "unit": "s"  },
+        { "key": "vacuum_level",       "label": "抽真空真空度",   "addr": "VB9140", "len": 10, "type": "ascii", "unit": "Pa" },
+        { "key": "charge_duration",    "label": "充注时长",       "addr": "VB9150", "len": 10, "type": "ascii", "unit": "s"  },
+        { "key": "refrigerant_type",   "label": "制冷剂类型",     "addr": "VB9160", "len": 10, "type": "ascii", "hint": "R134a 名称字符串，非编号" },
+        { "key": "refrigerant_qty",    "label": "制冷剂加注量",   "addr": "VB9170", "len": 10, "type": "ascii", "unit": "g"  },
+        { "key": "charge_start_date",  "label": "充注开始日期",   "addr": "VB9180", "len": 10, "type": "ascii", "hint": "2026/09/13" },
+        { "key": "charge_start_time",  "label": "充注开始时间",   "addr": "VB9190", "len": 10, "type": "ascii", "hint": "18:22:05" },
+        { "key": "oil_duration",       "label": "油充注时长",     "addr": "VB9200", "len": 10, "type": "ascii", "unit": "s"  },
+        { "key": "oil_qty",            "label": "油加注量",       "addr": "VB9210", "len": 10, "type": "ascii", "unit": "g"  },
+        { "key": "barcode",            "label": "产品条码",       "addr": "VB9220", "len": 30, "type": "ascii" }
+      ]
+    }
+  },
+
+  "refrigerants": {
+    "_说明": "下发方向 VW9730 用编号(Int16)；回读方向 VB9160 是名称字符串。两者靠本表互转，比对时忽略大小写。",
+    "1":  "R134A",
+    "2":  "R22",
+    "3":  "R32",
+    "4":  "R410A",
+    "5":  "R407C",
+    "6":  "R290",
+    "7":  "R600A",
+    "8":  "R404A",
+    "9":  "R1234YF",
+    "10": "R1233ZD",
+    "11": "R515B",
+    "12": "R454C",
+    "13": "备用"
+  },
+
+  "datasource": {
+    "_说明": "按条码查加注参数的数据源。甲方侧待定（称为服务器上的文件，可能是 Excel），先用 mock 打通全链路。",
+    "type": "mock",
+    "file_path": "",
+    "refresh_interval_ms": 60000,
+    "cache_db": "param_cache.db"
+  },
+
+  "upload": {
+    "_说明": "MES/ERP 上传。2026-09-23 对方确认：只要 1 条合并记录，故 mode=combined。split（真空段/充注段分两条）保留备用。报文规范待甲方提供后改这里。",
+    "mode": "combined",
+    "base_url": "http://127.0.0.1:8080",
+    "vacuum_path": "/api/mes/vacuum",
+    "charge_path": "/api/mes/charge",
+    "combined_path": "/api/mes/record",
+    "timeout_ms": 10000,
+    "retry_interval_ms": 30000,
+    "max_retry": 0,
+    "headers": {}
+  },
+
+  "storage": {
+    "db_path": "cm8600.db",
+    "keep_days": 365
+  }
+}
