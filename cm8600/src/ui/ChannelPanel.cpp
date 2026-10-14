@@ -1,14 +1,24 @@
 #include "ui/ChannelPanel.h"
 
 #include "app/Logger.h"
+#include "storage/CsvExport.h"
+#include "storage/Database.h"
 
+#include <QDateTime>
+#include <QDateTimeEdit>
+#include <QDialog>
+#include <QDialogButtonBox>
+#include <QDir>
+#include <QFileDialog>
 #include <QFont>
 #include <QFormLayout>
 #include <QGroupBox>
 #include <QHBoxLayout>
 #include <QHeaderView>
 #include <QLabel>
+#include <QMessageBox>
 #include <QPlainTextEdit>
+#include <QPushButton>
 #include <QTableWidget>
 #include <QVBoxLayout>
 
@@ -53,9 +63,10 @@ QString fmtTime(const QDateTime &dt)
 
 } // namespace
 
-ChannelPanel::ChannelPanel(const ChannelConfig &channel, QWidget *parent)
+ChannelPanel::ChannelPanel(const ChannelConfig &channel, Database *db, QWidget *parent)
     : QWidget(parent)
     , m_ch(channel)
+    , m_db(db)
 {
     auto *root = new QVBoxLayout(this);
     root->setContentsMargins(8, 8, 8, 8);
@@ -171,6 +182,17 @@ QWidget *ChannelPanel::buildHistoryBox()
 {
     auto *box = new QGroupBox(QStringLiteral("历史记录"), this);
     auto *layout = new QVBoxLayout(box);
+
+    // 工具条：按时间段导出
+    auto *toolRow = new QHBoxLayout();
+    toolRow->setContentsMargins(0, 0, 0, 0);
+    toolRow->addStretch();
+    auto *exportBtn = new QPushButton(QStringLiteral("导出..."), box);
+    exportBtn->setToolTip(QStringLiteral("按时间段把本通道的历史记录导出为 CSV"));
+    exportBtn->setEnabled(m_db != nullptr);
+    connect(exportBtn, &QPushButton::clicked, this, &ChannelPanel::exportHistory);
+    toolRow->addWidget(exportBtn);
+    layout->addLayout(toolRow);
 
     m_history = new QTableWidget(0, 11, box);
     m_history->setHorizontalHeaderLabels({
@@ -290,6 +312,91 @@ void ChannelPanel::loadHistory(const QVector<ResultRecord> &records)
     m_history->setRowCount(0);
     for (const ResultRecord &r : records)
         insertHistoryRow(m_history->rowCount(), r);   // 传进来的已是倒序
+}
+
+void ChannelPanel::exportHistory()
+{
+    if (!m_db) {
+        QMessageBox::warning(this, QStringLiteral("导出历史记录"),
+                             QStringLiteral("数据库不可用，无法导出。"));
+        return;
+    }
+
+    // ---- 时间段选择对话框 ----
+    QDialog dlg(this);
+    dlg.setWindowTitle(QStringLiteral("导出历史记录 - %1").arg(m_ch.name));
+    auto *form = new QFormLayout(&dlg);
+
+    const QDateTime now  = QDateTime::currentDateTime();
+    const QDateTime from0 = QDateTime(now.date(), QTime(0, 0, 0));
+
+    auto *fromEdit = new QDateTimeEdit(from0, &dlg);
+    auto *toEdit   = new QDateTimeEdit(now, &dlg);
+    for (QDateTimeEdit *e : { fromEdit, toEdit }) {
+        e->setDisplayFormat(QStringLiteral("yyyy-MM-dd HH:mm:ss"));
+        e->setCalendarPopup(true);
+    }
+
+    form->addRow(QStringLiteral("起始时间："), fromEdit);
+    form->addRow(QStringLiteral("结束时间："), toEdit);
+
+    auto *buttons = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, &dlg);
+    buttons->button(QDialogButtonBox::Ok)->setText(QStringLiteral("导出"));
+    buttons->button(QDialogButtonBox::Cancel)->setText(QStringLiteral("取消"));
+    connect(buttons, &QDialogButtonBox::accepted, &dlg, &QDialog::accept);
+    connect(buttons, &QDialogButtonBox::rejected, &dlg, &QDialog::reject);
+    form->addRow(buttons);
+
+    if (dlg.exec() != QDialog::Accepted)
+        return;
+
+    const QDateTime from = fromEdit->dateTime();
+    const QDateTime to   = toEdit->dateTime();
+    if (from > to) {
+        QMessageBox::warning(this, QStringLiteral("导出历史记录"),
+                             QStringLiteral("起始时间不能晚于结束时间。"));
+        return;
+    }
+
+    // ---- 查数据 ----
+    QString err;
+    const QVector<ResultRecord> list = m_db->recordsInRange(m_ch.id, from, to, &err);
+    if (!err.isEmpty()) {
+        QMessageBox::critical(this, QStringLiteral("导出历史记录"),
+                              QStringLiteral("查询失败：%1").arg(err));
+        return;
+    }
+    if (list.isEmpty()) {
+        QMessageBox::information(this, QStringLiteral("导出历史记录"),
+                                 QStringLiteral("该时间段内没有记录。"));
+        return;
+    }
+
+    // ---- 选保存路径 ----
+    const QString defaultName = QStringLiteral("通道%1_历史_%2_%3.csv")
+                                    .arg(m_ch.id)
+                                    .arg(from.toString(QStringLiteral("yyyyMMddHHmm")),
+                                         to.toString(QStringLiteral("yyyyMMddHHmm")));
+    const QString defaultPath = QDir(QDir::homePath()).filePath(defaultName);
+
+    const QString path = QFileDialog::getSaveFileName(
+        this, QStringLiteral("保存历史记录"), defaultPath,
+        QStringLiteral("CSV 文件 (*.csv);;所有文件 (*.*)"));
+    if (path.isEmpty())
+        return;
+
+    // ---- 写文件 ----
+    if (!exportResultRecordsCsv(path, list, &err)) {
+        QMessageBox::critical(this, QStringLiteral("导出历史记录"),
+                              QStringLiteral("导出失败：%1").arg(err));
+        return;
+    }
+
+    logger().info(m_ch.id,
+                  QStringLiteral("已导出 %1 条历史记录到 %2").arg(list.size())
+                      .arg(QDir::toNativeSeparators(path)));
+    QMessageBox::information(this, QStringLiteral("导出历史记录"),
+                             QStringLiteral("已导出 %1 条记录。").arg(list.size()));
 }
 
 void ChannelPanel::appendLog(const QDateTime &time, int level, const QString &message)

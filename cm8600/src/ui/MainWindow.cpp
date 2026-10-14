@@ -90,7 +90,7 @@ void MainWindow::showWindows()
 
     int idx = 0;
     for (const ChannelConfig &ch : std::as_const(m_cfg.channels)) {
-        auto *panel = new ChannelPanel(ch);
+        auto *panel = new ChannelPanel(ch, m_db);
         m_panels.insert(ch.id, panel);
 
         const bool isPrimary = (idx == 0);

@@ -67,6 +67,14 @@ public:
     /// 最近若干条，channelId <= 0 表示不限通道。界面列表用
     QVector<ResultRecord> recentRecords(int channelId, int limit, QString *err = nullptr);
 
+    /**
+     * 按时间段取记录，供"导出历史"用。
+     * 以 read_at（PLC 回传完成的时刻）为筛选依据，命中 idx_record_read_at 索引。
+     * channelId <= 0 表示不限通道；from/to 若无效则不加该端的限制。
+     */
+    QVector<ResultRecord> recordsInRange(int channelId, const QDateTime &from, const QDateTime &to,
+                                         QString *err = nullptr);
+
     /// 删除超过 keepDays 天的记录（只删已上传完成的，没传上去的一律留着）
     int purgeOldRecords(int keepDays, QString *err = nullptr);
 

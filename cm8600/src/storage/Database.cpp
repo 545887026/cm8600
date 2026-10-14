@@ -9,6 +9,7 @@
 #include <QSqlDatabase>
 #include <QSqlError>
 #include <QSqlQuery>
+#include <QStringList>
 #include <QThread>
 #include <QVariant>
 
@@ -330,6 +331,71 @@ QVector<ResultRecord> Database::recentRecords(int channelId, int limit, QString 
 
     if (!q.exec()) {
         reportQueryError(q, QStringLiteral("查询历史记录"), err);
+        return list;
+    }
+
+    while (q.next()) {
+        ResultRecord r;
+        r.channelId        = q.value(0).toInt();
+        r.barcode          = q.value(1).toString();
+        r.vacuumStart      = fromIso(q.value(2).toString());
+        r.vacuumDuration   = q.value(3).toDouble();
+        r.vacuumLevel      = q.value(4).toDouble();
+        r.chargeStart      = fromIso(q.value(5).toString());
+        r.chargeDuration   = q.value(6).toDouble();
+        r.refrigerantName  = q.value(7).toString();
+        r.refrigerantCode  = q.value(8).toInt();
+        r.refrigerantQty   = q.value(9).toDouble();
+        r.oilDuration      = q.value(10).toDouble();
+        r.oilQty           = q.value(11).toDouble();
+        r.readAt           = fromIso(q.value(12).toString());
+        list << r;
+    }
+    return list;
+}
+
+QVector<ResultRecord> Database::recordsInRange(int channelId, const QDateTime &from,
+                                               const QDateTime &to, QString *err)
+{
+    QVector<ResultRecord> list;
+
+    bool ok = false;
+    QSqlDatabase db = connection(&ok, err);
+    if (!ok)
+        return list;
+
+    // 按需拼 WHERE 子句，而不是写死四个版本的 prepare
+    QString sql = QStringLiteral(
+        "SELECT channel_id, barcode, vacuum_start, vacuum_duration, vacuum_level,"
+        " charge_start, charge_duration, refrigerant_name, refrigerant_code,"
+        " refrigerant_qty, oil_duration, oil_qty, read_at"
+        " FROM record");
+
+    QStringList where;
+    QVector<QVariant> binds;
+    if (channelId > 0) {
+        where << QStringLiteral("channel_id = ?");
+        binds << channelId;
+    }
+    if (from.isValid()) {
+        where << QStringLiteral("read_at >= ?");
+        binds << from.toString(QLatin1String(kIso));
+    }
+    if (to.isValid()) {
+        where << QStringLiteral("read_at <= ?");
+        binds << to.toString(QLatin1String(kIso));
+    }
+    if (!where.isEmpty())
+        sql += QStringLiteral(" WHERE ") + where.join(QStringLiteral(" AND "));
+    sql += QStringLiteral(" ORDER BY read_at ASC, id ASC");
+
+    QSqlQuery q(db);
+    q.prepare(sql);
+    for (const QVariant &v : binds)
+        q.addBindValue(v);
+
+    if (!q.exec()) {
+        reportQueryError(q, QStringLiteral("按时间段查询历史记录"), err);
         return list;
     }
 
