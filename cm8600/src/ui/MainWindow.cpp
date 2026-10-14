@@ -6,21 +6,14 @@
 #include "plc/Snap7Lib.h"
 #include "storage/Database.h"
 #include "ui/ChannelPanel.h"
+#include "ui/ChannelWindow.h"
 #include "upload/UploadService.h"
 
-#include <QCloseEvent>
 #include <QCoreApplication>
 #include <QDir>
-#include <QFont>
-#include <QGroupBox>
-#include <QHBoxLayout>
-#include <QLabel>
-#include <QPlainTextEdit>
-#include <QSplitter>
-#include <QStatusBar>
+#include <QGuiApplication>
+#include <QScreen>
 #include <QThread>
-#include <QVBoxLayout>
-#include <QWidget>
 
 #include <utility>
 
@@ -30,7 +23,7 @@ namespace {
 
 constexpr int kHistoryPreload = 100;
 
-/// 相对路径一律相对程序目录，避免受快捷方式的“起始位置”影响
+/// 相对路径一律相对程序目录，避免受快捷方式的"起始位置"影响
 QString resolvePath(const QString &p)
 {
     if (p.isEmpty() || QDir::isAbsolutePath(p))
@@ -40,14 +33,10 @@ QString resolvePath(const QString &p)
 
 } // namespace
 
-MainWindow::MainWindow(const AppConfig &cfg, QWidget *parent)
-    : QMainWindow(parent)
+MainWindow::MainWindow(const AppConfig &cfg, QObject *parent)
+    : QObject(parent)
     , m_cfg(cfg)
 {
-    setWindowTitle(m_cfg.title);
-    resize(1600, 950);
-    buildUi();
-
     connect(&logger(), &Logger::logged, this, &MainWindow::onLogged);
 }
 
@@ -61,45 +50,11 @@ MainWindow::~MainWindow()
     m_source = nullptr;
     delete m_db;
     m_db = nullptr;
-}
 
-void MainWindow::buildUi()
-{
-    auto *central = new QWidget(this);
-    auto *root = new QVBoxLayout(central);
-    root->setContentsMargins(6, 6, 6, 6);
-
-    // 左右分屏：一边一个通道
-    auto *splitter = new QSplitter(Qt::Horizontal, central);
-    for (const ChannelConfig &ch : std::as_const(m_cfg.channels)) {
-        auto *panel = new ChannelPanel(ch, splitter);
-        splitter->addWidget(panel);
-        m_panels.insert(ch.id, panel);
-    }
-    for (int i = 0; i < splitter->count(); ++i)
-        splitter->setStretchFactor(i, 1);
-
-    root->addWidget(splitter, 1);
-
-    auto *logBox = new QGroupBox(QStringLiteral("系统日志"), central);
-    auto *logLayout = new QVBoxLayout(logBox);
-    m_globalLog = new QPlainTextEdit(logBox);
-    m_globalLog->setReadOnly(true);
-    m_globalLog->setMaximumBlockCount(3000);
-    m_globalLog->setFont(QFont(QStringLiteral("Consolas"), 9));
-    logLayout->addWidget(m_globalLog);
-    logBox->setMaximumHeight(160);
-    root->addWidget(logBox);
-
-    setCentralWidget(central);
-
-    m_snapLabel   = new QLabel(this);
-    m_sourceLabel = new QLabel(this);
-    m_queueLabel  = new QLabel(this);
-    statusBar()->addWidget(m_snapLabel);
-    statusBar()->addWidget(new QLabel(QStringLiteral("  |  "), this));
-    statusBar()->addWidget(m_sourceLabel);
-    statusBar()->addPermanentWidget(m_queueLabel);
+    // worker 已经停了，panel 作为窗口的子部件会随窗口一起销毁
+    qDeleteAll(m_windows);
+    m_windows.clear();
+    m_panels.clear();
 }
 
 bool MainWindow::initialize(QString *err)
@@ -120,27 +75,71 @@ bool MainWindow::initialize(QString *err)
                              .arg(m_cfg.datasource.type));
     }
     m_source = new MockParamSource(m_cfg);
-    m_sourceLabel->setText(QStringLiteral("数据源：%1").arg(m_source->describe()));
 
     // ---- 上传服务 ----
     m_uploader = new UploadService(m_cfg.upload, m_db, this);
     connect(m_uploader, &UploadService::queueChanged, this, &MainWindow::onQueueChanged);
     m_uploader->start();
 
-    // ---- snap7 状态 ----
+    return startChannels(err);
+}
+
+void MainWindow::showWindows()
+{
+    const QList<QScreen *> screens = QGuiApplication::screens();
+
+    int idx = 0;
+    for (const ChannelConfig &ch : std::as_const(m_cfg.channels)) {
+        auto *panel = new ChannelPanel(ch);
+        m_panels.insert(ch.id, panel);
+
+        const bool isPrimary = (idx == 0);
+        const QString title = QStringLiteral("%1 - %2#%3")
+                                  .arg(m_cfg.title)
+                                  .arg(ch.id)
+                                  .arg(ch.name.isEmpty() ? QString()
+                                                         : QStringLiteral(" %1").arg(ch.name));
+
+        auto *window = new ChannelWindow(title, panel, isPrimary);
+        m_windows.insert(ch.id, window);
+
+        if (isPrimary)
+            connect(window, &ChannelWindow::closed, this, &MainWindow::onPrimaryClosed);
+
+        QScreen *screen = screens.value(idx, screens.isEmpty() ? nullptr : screens.first());
+        if (screen) {
+            window->move(screen->geometry().topLeft());
+            window->showMaximized();
+        } else {
+            window->show();
+        }
+
+        ++idx;
+    }
+
+    // ---- 把 initialize 里拿到的几条状态灌到所有窗口 ----
+    if (m_source) {
+        const QString sourceText = QStringLiteral("数据源：%1").arg(m_source->describe());
+        for (ChannelWindow *w : std::as_const(m_windows))
+            w->setSourceText(sourceText);
+    }
+
     if (Snap7Lib::instance().isLoaded()) {
-        m_snapLabel->setText(QStringLiteral("snap7：%1")
-                                 .arg(QDir::toNativeSeparators(Snap7Lib::instance().libraryPath())));
+        const QString snapText = QStringLiteral("snap7：%1")
+                                     .arg(QDir::toNativeSeparators(Snap7Lib::instance().libraryPath()));
+        for (ChannelWindow *w : std::as_const(m_windows))
+            w->setSnap7Text(snapText, false);
     } else {
-        m_snapLabel->setText(QStringLiteral("snap7：未加载，PLC 通讯不可用"));
-        m_snapLabel->setStyleSheet(QStringLiteral("color:#c0392b; font-weight:bold;"));
+        const QString snapText = QStringLiteral("snap7：未加载，PLC 通讯不可用");
+        for (ChannelWindow *w : std::as_const(m_windows))
+            w->setSnap7Text(snapText, true);
     }
 
     // ---- 历史记录预载 ----
-    for (auto it = m_panels.constBegin(); it != m_panels.constEnd(); ++it)
-        it.value()->loadHistory(m_db->recentRecords(it.key(), kHistoryPreload));
-
-    return startChannels(err);
+    if (m_db) {
+        for (auto it = m_panels.constBegin(); it != m_panels.constEnd(); ++it)
+            it.value()->loadHistory(m_db->recentRecords(it.key(), kHistoryPreload));
+    }
 }
 
 bool MainWindow::startChannels(QString *err)
@@ -162,24 +161,30 @@ bool MainWindow::startChannels(QString *err)
         connect(thread, &QThread::started,  worker, &ChannelWorker::start);
         connect(thread, &QThread::finished, worker, &QObject::deleteLater);
 
-        ChannelPanel *panel = m_panels.value(ch.id, nullptr);
-        if (panel) {
-            connect(worker, &ChannelWorker::linkChanged, panel,
-                    [panel](int, bool connected, const QString &detail) {
-                        panel->setLink(connected, detail);
-                    });
-            connect(worker, &ChannelWorker::peerAliveChanged, panel,
-                    [panel](int, bool alive) { panel->setPeerAlive(alive); });
-            connect(worker, &ChannelWorker::queryHandled, panel,
-                    [panel](int, const QString &barcode, bool ok, const ChargeParams &p,
-                            const QString &reason) {
+        // worker 的信号用 lambda 通过 m_panels.value(id) 查目标 panel；
+        // 这里不能捕获 panel 指针，因为 showWindows() 还没执行时它还不存在。
+        const int chId = ch.id;
+        connect(worker, &ChannelWorker::linkChanged, this,
+                [this, chId](int, bool connected, const QString &detail) {
+                    if (ChannelPanel *p = m_panels.value(chId, nullptr))
+                        p->setLink(connected, detail);
+                });
+        connect(worker, &ChannelWorker::peerAliveChanged, this,
+                [this, chId](int, bool alive) {
+                    if (ChannelPanel *p = m_panels.value(chId, nullptr))
+                        p->setPeerAlive(alive);
+                });
+        connect(worker, &ChannelWorker::queryHandled, this,
+                [this, chId](int, const QString &barcode, bool ok, const ChargeParams &p,
+                             const QString &reason) {
+                    if (ChannelPanel *panel = m_panels.value(chId, nullptr))
                         panel->onQueryHandled(barcode, ok, p, reason);
-                    });
-            connect(worker, &ChannelWorker::recordSaved, panel,
-                    [panel](int, const ResultRecord &rec, bool duplicate, qint64) {
+                });
+        connect(worker, &ChannelWorker::recordSaved, this,
+                [this, chId](int, const ResultRecord &rec, bool duplicate, qint64) {
+                    if (ChannelPanel *panel = m_panels.value(chId, nullptr))
                         panel->onRecordSaved(rec, duplicate);
-                    });
-        }
+                });
 
         // 记录入库后立刻排上传；重复读进来的不再发
         connect(worker, &ChannelWorker::recordSaved, this,
@@ -220,12 +225,24 @@ void MainWindow::stopChannels()
     m_threads.clear();
 }
 
-void MainWindow::closeEvent(QCloseEvent *event)
+void MainWindow::shutdown()
 {
+    if (m_shuttingDown)
+        return;
+    m_shuttingDown = true;
+
     stopChannels();
     if (m_uploader)
         m_uploader->stop();
-    event->accept();
+
+    // 副窗口的 closeEvent 会把事件 ignore 掉改成 hide，不能靠
+    // quitOnLastWindowClosed；主窗口关的时候直接退 app
+    QCoreApplication::quit();
+}
+
+void MainWindow::onPrimaryClosed()
+{
+    shutdown();
 }
 
 void MainWindow::onLogged(const QDateTime &time, int level, int channelId, const QString &message)
@@ -236,9 +253,12 @@ void MainWindow::onLogged(const QDateTime &time, int level, int channelId, const
     const auto lv = static_cast<Logger::Level>(level);
     const QString chText = channelId > 0 ? QStringLiteral("%1#").arg(channelId)
                                          : QStringLiteral("--");
-    m_globalLog->appendPlainText(QStringLiteral("%1 [%2] %3 %4")
-                                     .arg(time.toString(QStringLiteral("HH:mm:ss.zzz")),
-                                          Logger::levelText(lv), chText, message));
+    const QString line = QStringLiteral("%1 [%2] %3 %4")
+                             .arg(time.toString(QStringLiteral("HH:mm:ss.zzz")),
+                                  Logger::levelText(lv), chText, message);
+
+    for (ChannelWindow *w : std::as_const(m_windows))
+        w->appendGlobalLog(line);
 }
 
 void MainWindow::onQueueChanged(int pending, int dead)
@@ -247,10 +267,9 @@ void MainWindow::onQueueChanged(int pending, int dead)
     if (dead > 0)
         text += QStringLiteral("    已放弃：%1").arg(dead);
 
-    m_queueLabel->setText(text);
-    m_queueLabel->setStyleSheet(pending > 0 || dead > 0
-                                    ? QStringLiteral("color:#c0392b; font-weight:bold;")
-                                    : QString());
+    const bool alert = pending > 0 || dead > 0;
+    for (ChannelWindow *w : std::as_const(m_windows))
+        w->setQueueText(text, alert);
 }
 
 } // namespace cm8600

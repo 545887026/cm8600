@@ -172,16 +172,22 @@ QWidget *ChannelPanel::buildHistoryBox()
     auto *box = new QGroupBox(QStringLiteral("历史记录"), this);
     auto *layout = new QVBoxLayout(box);
 
-    m_history = new QTableWidget(0, 6, box);
+    m_history = new QTableWidget(0, 11, box);
     m_history->setHorizontalHeaderLabels({
-        QStringLiteral("时间"), QStringLiteral("条码"), QStringLiteral("制冷剂"),
-        QStringLiteral("加注量 g"), QStringLiteral("真空度 Pa"), QStringLiteral("充注时长 s"),
+        QStringLiteral("时间"),           QStringLiteral("条码"),
+        QStringLiteral("抽真空开始时间"), QStringLiteral("抽真空时长 s"),
+        QStringLiteral("真空度 Pa"),      QStringLiteral("冷冻油充注时长 s"),
+        QStringLiteral("冷冻油加注量 g"), QStringLiteral("制冷剂类型"),
+        QStringLiteral("制冷剂加注时间"), QStringLiteral("制冷剂充注时长 s"),
+        QStringLiteral("制冷剂加注量 g"),
     });
     m_history->verticalHeader()->setVisible(false);
     m_history->setEditTriggers(QAbstractItemView::NoEditTriggers);
     m_history->setSelectionBehavior(QAbstractItemView::SelectRows);
     m_history->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     m_history->horizontalHeader()->setSectionResizeMode(1, QHeaderView::ResizeToContents);
+    m_history->horizontalHeader()->setSectionResizeMode(2, QHeaderView::ResizeToContents);
+    m_history->horizontalHeader()->setSectionResizeMode(8, QHeaderView::ResizeToContents);
 
     layout->addWidget(m_history);
     return box;
@@ -264,10 +270,15 @@ void ChannelPanel::insertHistoryRow(int row, const ResultRecord &rec)
     const QStringList cells = {
         fmtTime(when),
         rec.barcode,
-        rec.refrigerantName,
-        QString::number(rec.refrigerantQty, 'f', 1),
+        fmtTime(rec.vacuumStart),
+        QString::number(rec.vacuumDuration, 'f', 0),
         QString::number(rec.vacuumLevel, 'f', 1),
+        QString::number(rec.oilDuration, 'f', 0),
+        QString::number(rec.oilQty, 'f', 1),
+        rec.refrigerantName,
+        fmtTime(rec.chargeStart),
         QString::number(rec.chargeDuration, 'f', 0),
+        QString::number(rec.refrigerantQty, 'f', 1),
     };
 
     for (int c = 0; c < cells.size(); ++c)

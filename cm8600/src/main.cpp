@@ -59,6 +59,6 @@ int main(int argc, char *argv[])
         return 2;
     }
 
-    w.show();
+    w.showWindows();
     return app.exec();
 }
