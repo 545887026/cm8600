@@ -177,7 +177,7 @@ QWidget *ChannelPanel::buildHistoryBox()
         QStringLiteral("时间"),           QStringLiteral("条码"),
         QStringLiteral("抽真空开始时间"), QStringLiteral("抽真空时长 s"),
         QStringLiteral("真空度 Pa"),      QStringLiteral("冷冻油充注时长 s"),
-        QStringLiteral("冷冻油加注量 g"), QStringLiteral("制冷剂类型"),
+        QStringLiteral("冷冻油加注量 ml"), QStringLiteral("制冷剂类型"),
         QStringLiteral("制冷剂加注时间"), QStringLiteral("制冷剂充注时长 s"),
         QStringLiteral("制冷剂加注量 g"),
     });

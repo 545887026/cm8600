@@ -204,6 +204,11 @@ void ChannelWorker::pollQueryTrigger()
 
     logger().info(m_ch.id, QStringLiteral("收到查询请求，条码：\"%1\"").arg(barcode));
     handleQuery(barcode);
+
+    // PLC 置位的触发位（_Send）由上位机复位，和 ok_bit/fail_bit 的方向相反
+    QString resetErr;
+    if (!m_plc.writeBit(m_cfg.plc.query.triggerBit, false, &resetErr))
+        logger().error(m_ch.id, QStringLiteral("复位查询触发位失败：%1").arg(resetErr));
 }
 
 bool ChannelWorker::handleQuery(const QString &barcode)
