@@ -81,10 +81,21 @@ public:
     /// 把 snap7 错误码转成可读文本；未加载时返回错误码本身
     QString errorText(int code) const;
 
+    // ---- 连接类型（TSAP 第一字节） ----
+    // Cli_ConnectTo 默认用 PG(0x01)；某些 PLC 侧只放通 OP(0x02) 或 S7Basic(0x03)
+    // 连接，用这个在 ConnectTo 之前改。改完后 Cli_ConnectTo 仍按 rack*32+slot
+    // 填 TSAP 第二字节。
+    enum ConnectionType : int {
+        CTPg      = 1,
+        CTOp      = 2,
+        CTS7Basic = 3,
+    };
+
     // ---- 客户端 ----
     S7Object (*Cli_Create)()                                                        = nullptr;
     void     (*Cli_Destroy)(S7Object *client)                                       = nullptr;
     int      (*Cli_ConnectTo)(S7Object client, const char *addr, int rack, int slot) = nullptr;
+    int      (*Cli_SetConnectionType)(S7Object client, quint16 connType)            = nullptr;
     int      (*Cli_Disconnect)(S7Object client)                                     = nullptr;
     int      (*Cli_GetConnected)(S7Object client, int *connected)                   = nullptr;
     int      (*Cli_SetParam)(S7Object client, int paramNumber, void *value)         = nullptr;

@@ -78,6 +78,12 @@ bool S7Client::connectTo(const QString &ip, int rack, int slot, int port, int ti
         lib.Cli_SetParam(m_client, Snap7Lib::ParamRemotePort, &p);
     }
 
+    // TSAP 第一字节 = 连接类型。默认 PG(0x01)，这里显式切成 S7 Basic(0x03)，
+    // 配合 rack=0/slot=1 得到 TSAP 03.01；对侧某些 PLC 只放通这个 TSAP。
+    // 第二字节由 Cli_ConnectTo 内部按 rack*32+slot 填。
+    if (lib.Cli_SetConnectionType)
+        lib.Cli_SetConnectionType(m_client, Snap7Lib::CTS7Basic);
+
     const QByteArray addr = ip.toLatin1();
     const int code = lib.Cli_ConnectTo(m_client, addr.constData(), rack, slot);
     if (code != 0) {

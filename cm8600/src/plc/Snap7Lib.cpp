@@ -91,6 +91,9 @@ bool Snap7Lib::resolveAll(QString *err)
     bind(Cli_Create,       "Cli_Create");
     bind(Cli_Destroy,      "Cli_Destroy");
     bind(Cli_ConnectTo,    "Cli_ConnectTo");
+    // SetConnectionType 不是所有旧版 snap7 都导出；缺了也不报错，连接时跳过
+    Cli_SetConnectionType = reinterpret_cast<decltype(Cli_SetConnectionType)>(
+        m_lib->resolve("Cli_SetConnectionType"));
     bind(Cli_Disconnect,   "Cli_Disconnect");
     bind(Cli_GetConnected, "Cli_GetConnected");
     bind(Cli_SetParam,     "Cli_SetParam");
