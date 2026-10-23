@@ -45,6 +45,7 @@ add_library(cm8600_core STATIC
     src/core/Records.h             src/core/Records.cpp
     src/core/ChannelWorker.h       src/core/ChannelWorker.cpp
     src/storage/Database.h         src/storage/Database.cpp
+    src/storage/CsvExport.h        src/storage/CsvExport.cpp
     src/datasource/IParamSource.h
     src/datasource/MockParamSource.h  src/datasource/MockParamSource.cpp
     src/upload/UploadService.h     src/upload/UploadService.cpp
@@ -63,6 +64,7 @@ target_link_libraries(cm8600_core PUBLIC
 add_executable(CM8600Host WIN32
     src/main.cpp
     src/ui/MainWindow.h            src/ui/MainWindow.cpp
+    src/ui/ChannelWindow.h         src/ui/ChannelWindow.cpp
     src/ui/ChannelPanel.h          src/ui/ChannelPanel.cpp
 )
 target_link_libraries(CM8600Host PRIVATE cm8600_core Qt${QT_VERSION_MAJOR}::Widgets)
